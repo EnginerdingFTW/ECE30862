@@ -17,6 +17,8 @@ public class GameManager extends GameCore {
     	System.out.println("starting the game.");
         new GameManager().run();
     }
+    
+    //Adrian has arrived.
 
     // uncompressed, 44100Hz, 16-bit, mono, signed, little-endian
     private static final AudioFormat PLAYBACK_FORMAT =
