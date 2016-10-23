@@ -4,16 +4,16 @@
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="/Users/TayLipson/Github/ECE30862/JavaProject1/allsrc/ch05src/src/com/brackeen/javagamebook/tilegame/sprites"/>
+			<item value="/Users/TayLipson/Github/ECE30862/JavaProject1/allsrc/ch05src/src/com/brackeen/javagamebook/util"/>
 			<item value="/Users/TayLipson/Github/ECE30862/JavaProject1/allsrc/ch05src/src/com/brackeen/javagamebook/tilegame"/>
 			<item value="/Users/TayLipson/Github/ECE30862/JavaProject1/allsrc/ch05src/src/com/brackeen/javagamebook/test"/>
 			<item value="/Users/TayLipson/Github/ECE30862/JavaProject1/allsrc/ch05src/src/com/brackeen/javagamebook/sound"/>
-			<item value="/Users/TayLipson/Github/ECE30862/JavaProject1/allsrc/ch05src/src/com/brackeen/javagamebook/input"/>
-			<item value="/Users/TayLipson/Github/ECE30862/JavaProject1/allsrc/ch05src/src/com/brackeen/javagamebook/graphics"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
-		<item value="900" key="dialogWidth"/>
-		<item value="563" key="dialogHeight"/>
+		<item value="1200" key="dialogWidth"/>
+		<item value="675" key="dialogHeight"/>
 		<list key="orderedProviders">
 		</list>
 		<list key="textArray">

@@ -1,6 +1,6 @@
 
 /**
-    A abstract class designed to filter sound samples.
+ //   A abstract class designed to filter sound samples.
     Since SoundFilters may use internal buffering of samples,
     a new SoundFilter object should be created for every sound
     played. However, SoundFilters can be reused after they are

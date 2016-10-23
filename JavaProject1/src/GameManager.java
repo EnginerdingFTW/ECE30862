@@ -38,6 +38,7 @@ public class GameManager extends GameCore {
 
     private GameAction moveLeft;
     private GameAction moveRight;
+    private GameAction shoot;
     private GameAction jump;
     private GameAction exit;
 
@@ -92,23 +93,22 @@ public class GameManager extends GameCore {
         System.out.println("in initInput in GameManager class.");
         moveLeft = new GameAction("moveLeft");
         moveRight = new GameAction("moveRight");
+        shoot = new GameAction("shoot");
         jump = new GameAction("jump",
             GameAction.DETECT_INITAL_PRESS_ONLY);
         exit = new GameAction("exit",
             GameAction.DETECT_INITAL_PRESS_ONLY);
 
-        GameAction temp = new GameAction("TESTING");
         
         inputManager = new InputManager(
             screen.getFullScreenWindow());
         inputManager.setCursor(InputManager.INVISIBLE_CURSOR);
-
+        
+        inputManager.mapToKey(shoot,  KeyEvent.VK_S);
         inputManager.mapToKey(moveLeft, KeyEvent.VK_LEFT);
         inputManager.mapToKey(moveRight, KeyEvent.VK_RIGHT);
         inputManager.mapToKey(jump, KeyEvent.VK_SPACE);
         inputManager.mapToKey(exit, KeyEvent.VK_ESCAPE);
-        
-        inputManager.mapToKey(temp, KeyEvent.VK_W);
     }
 
 
@@ -122,16 +122,20 @@ public class GameManager extends GameCore {
         if (player.isAlive()) {
             float velocityX = 0;
             if (moveLeft.isPressed()) {
-            	System.out.println("GameManager.checkInput in moveLeft.isPressed()");
+//            	System.out.println("GameManager.checkInput in moveLeft.isPressed()");
                 velocityX-=player.getMaxSpeed();
             }
             if (moveRight.isPressed()) {
-            	System.out.println("GameManager.checkInput in moveRight.isPressed()");
+//            	System.out.println("GameManager.checkInput in moveRight.isPressed()");
                 velocityX+=player.getMaxSpeed();
             }
             if (jump.isPressed()) {
-            	System.out.println("GameManager.checkInput in jump.isPressed()");
+//            	System.out.println("GameManager.checkInput in jump.isPressed()");
                 player.jump(false);
+            }
+            if (shoot.isPressed()) {
+//            	System.out.println("GameManager.checkInput in shoot.isPressed()");
+            	player.shooting();
             }
             player.setVelocityX(velocityX);
         }

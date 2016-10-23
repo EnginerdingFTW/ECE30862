@@ -1,11 +1,13 @@
-
+import java.util.Timer;
 /**
     The Player.
 */
 public class Player extends Creature {
 
     private static final float JUMP_SPEED = -.95f;
-
+    private static final float FIRE_RATE = 1.25f;
+    
+    private Amunition ammo = new Amunition(FIRE_RATE);
     private boolean onGround;
 
     public Player(Animation left, Animation right,
@@ -53,6 +55,16 @@ public class Player extends Creature {
             setVelocityY(JUMP_SPEED);
         }
     }
+    
+    public void shooting(){
+    	boolean dir = false;
+    	if (getVelocityX() > 0)
+    	{
+    		dir = true;
+    	}
+    	ammo.shooting(dir);
+    }
+    
 
 
     public float getMaxSpeed() {

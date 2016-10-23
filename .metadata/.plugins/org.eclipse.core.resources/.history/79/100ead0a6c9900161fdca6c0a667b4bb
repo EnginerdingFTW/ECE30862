@@ -1,0 +1,41 @@
+import java.util.Timer;
+
+import Player.FireRound;
+
+
+public class Amunition {
+
+	public boolean canShoot = true;
+	
+	 public void shooting()
+	 {
+    	Timer timer = new Timer();
+    	if (canShoot)
+    	{
+    		canShoot = false;
+    		timer.schedule(new FireRound(), 0);
+    	}	
+	 }
+	
+	
+    private class FireRound extends java.util.TimerTask
+    {
+	    public void run()
+	    {
+	    	System.out.println("I'M FIRING MY LASER! RAWRRRRRRRR");
+	    	//create ammo with velocity
+	    	try
+	    	{
+	    		Thread.sleep((long) FIRE_RATE * 1000);
+	    	}
+	    	catch (Exception e)
+	    	{
+	    		
+	    	}
+	    	canShoot = true;
+	    	
+	    }
+    }
+	
+	
+}
