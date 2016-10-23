@@ -1,0 +1,23 @@
+import java.awt.*;
+import java.awt.Dimension;
+import java.awt.event.*;
+import javax.swing.*;
+
+
+public class FullScreenFrame extends JFrame {
+	
+	public FullScreenFrame(JFrame frame)
+	{
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		if (gd.isFullScreenSupported())
+		{
+			gd.setFullScreenWindow(this);
+		}
+		else
+		{
+			System.out.println("full screen not supported");
+			setSize(480, 320);
+			setVisible(true);
+		}
+	}
+}

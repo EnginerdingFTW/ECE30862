@@ -1,0 +1,17 @@
+import java.awt.*;
+import java.awt.Dimension;
+import java.awt.event.*;
+import javax.swing.*;
+
+
+public class FullScreenFrame extends JFrame {
+	
+	public FullScreenFrame(GraphicsConfiguration gd)
+	{
+		//GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		super(gd);
+		createWindow();
+		
+
+	}
+}

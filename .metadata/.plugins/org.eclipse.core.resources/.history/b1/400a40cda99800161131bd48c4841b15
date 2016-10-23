@@ -1,0 +1,27 @@
+
+public class Main {
+	
+	private ScreenManager screen = null;
+	private static final DisplayModes[] = {
+		new DisplayMode(1024, 768, 32, 0),
+		new DisplayMode(1024, 768, 24, 0),
+		new DisplayMode(1024, 768, 16, 0),
+		new DisplayMode(640, 480, 32, 0),
+	};
+	
+	public static void main(String[] args)
+	{
+		System.out.println("Hello World.");
+		ScreenManager sc = new ScreenManager();
+		sc.getCurrentDisplayMode();
+	}
+	
+	public void initialize_screen()
+	{
+		screen = new ScreenManager();
+		DisplayMode displayMode = screen.findFirstCompatabileMode()
+	}
+
+	
+	
+}
