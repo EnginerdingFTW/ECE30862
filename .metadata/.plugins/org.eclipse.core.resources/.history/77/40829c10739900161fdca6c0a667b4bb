@@ -10,24 +10,18 @@ public class Amunition {
 	private static float FIRE_VEL = 2.0f;
 	private Sprite ammo;
 	private Animation anim;
-	private static TileMap tilemap;
+	private TileMap tilemap;
 	
-	public Amunition(float fire_rate)
+	public Amunition(float fire_rate, TileMap tile)
 	{
 		this.FIRE_RATE = fire_rate;
+		tilemap = tile;
 		String filename = "images/amunition.png";
 		Animation an = new Animation();
-		an.addFrame(new ImageIcon(filename).getImage(), 10);
 		an.addFrame(new ImageIcon(filename).getImage(), 10);
 		//ammo = new Sprite(an);
 		
 	}
-	
-	public static void SetMap(TileMap tile)
-	{
-		tilemap = tile;
-	}
-	
 	
 	public void shooting(Sprite sprite)
 	{
@@ -43,8 +37,8 @@ public class Amunition {
     	if (canShoot)
     	{
     		canShoot = false;
-    		timer.schedule(new FireRound(), 0);
     		spawnInstance(sprite);
+    		timer.schedule(new FireRound(), 0);
     	}	
 	 }
 	
@@ -53,7 +47,6 @@ public class Amunition {
 		ammo = new Sprite(anim);
 		ammo.setX(sprite.getX());
 		ammo.setY(sprite.getY());
-		//tilemap.addSprite(ammo);
 		
 		if (dir == true)
 		{

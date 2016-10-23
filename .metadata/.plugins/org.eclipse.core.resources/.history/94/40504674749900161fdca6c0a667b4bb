@@ -98,7 +98,7 @@ public class ResourceManager {
                 map = null;
             }
         }
-        Amunition.SetMap(map);
+        //Amunition.SetMap(map);
         return map;
     }
 

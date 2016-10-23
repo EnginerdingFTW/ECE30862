@@ -14,7 +14,6 @@ public class Player extends Creature {
         Animation deadLeft, Animation deadRight)
     {
         super(left, right, deadLeft, deadRight);
-        
     }
 
 
@@ -58,7 +57,12 @@ public class Player extends Creature {
     }
     
     public void shooting(){
-    	ammo.shooting(this);
+    	boolean dir = false;
+    	if (getVelocityX() > 0)
+    	{
+    		dir = true;
+    	}
+    	ammo.shooting(dir);
     }
     
 

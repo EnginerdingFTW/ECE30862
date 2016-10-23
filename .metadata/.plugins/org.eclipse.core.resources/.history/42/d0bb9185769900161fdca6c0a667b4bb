@@ -53,7 +53,8 @@ public class Amunition {
 		ammo = new Sprite(anim);
 		ammo.setX(sprite.getX());
 		ammo.setY(sprite.getY());
-		//tilemap.addSprite(ammo);
+		tilemap.addSprite(ammo);
+		System.out.println("made it past this line");
 		
 		if (dir == true)
 		{

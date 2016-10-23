@@ -18,12 +18,11 @@ public class Amunition {
 		String filename = "images/amunition.png";
 		Animation an = new Animation();
 		an.addFrame(new ImageIcon(filename).getImage(), 10);
-		an.addFrame(new ImageIcon(filename).getImage(), 10);
 		//ammo = new Sprite(an);
 		
 	}
 	
-	public static void SetMap(TileMap tile)
+	public void SetMap(TileMap tile)
 	{
 		tilemap = tile;
 	}
@@ -43,8 +42,8 @@ public class Amunition {
     	if (canShoot)
     	{
     		canShoot = false;
-    		timer.schedule(new FireRound(), 0);
     		spawnInstance(sprite);
+    		timer.schedule(new FireRound(), 0);
     	}	
 	 }
 	
@@ -53,7 +52,6 @@ public class Amunition {
 		ammo = new Sprite(anim);
 		ammo.setX(sprite.getX());
 		ammo.setY(sprite.getY());
-		//tilemap.addSprite(ammo);
 		
 		if (dir == true)
 		{

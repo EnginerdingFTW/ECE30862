@@ -18,7 +18,6 @@ public class Amunition {
 		String filename = "images/amunition.png";
 		Animation an = new Animation();
 		an.addFrame(new ImageIcon(filename).getImage(), 10);
-		an.addFrame(new ImageIcon(filename).getImage(), 10);
 		//ammo = new Sprite(an);
 		
 	}

@@ -10,7 +10,6 @@ public class Amunition {
 	private static float FIRE_VEL = 2.0f;
 	private Sprite ammo;
 	private Animation anim;
-	private static TileMap tilemap;
 	
 	public Amunition(float fire_rate)
 	{
@@ -18,16 +17,9 @@ public class Amunition {
 		String filename = "images/amunition.png";
 		Animation an = new Animation();
 		an.addFrame(new ImageIcon(filename).getImage(), 10);
-		an.addFrame(new ImageIcon(filename).getImage(), 10);
 		//ammo = new Sprite(an);
 		
 	}
-	
-	public static void SetMap(TileMap tile)
-	{
-		tilemap = tile;
-	}
-	
 	
 	public void shooting(Sprite sprite)
 	{
@@ -39,30 +31,18 @@ public class Amunition {
 		{
 			dir = false;
 		}
+		spawnInstance(sprite);
     	Timer timer = new Timer();
     	if (canShoot)
     	{
     		canShoot = false;
     		timer.schedule(new FireRound(), 0);
-    		spawnInstance(sprite);
     	}	
 	 }
 	
 	private void spawnInstance(Sprite sprite)
 	{
-		ammo = new Sprite(anim);
-		ammo.setX(sprite.getX());
-		ammo.setY(sprite.getY());
-		//tilemap.addSprite(ammo);
 		
-		if (dir == true)
-		{
-			ammo.setVelocityX(FIRE_VEL);
-		}
-		else
-		{
-			ammo.setVelocityX(FIRE_VEL);
-		}
 	}
 	
 	
@@ -71,6 +51,7 @@ public class Amunition {
 	    public void run()
 	    {
 	    	System.out.println("I'M FIRING MY LASER! RAWRRRRRRRR");
+	    	//create ammo with velocity
 	    	try
 	    	{
 	    		Thread.sleep((long) FIRE_RATE * 1000);

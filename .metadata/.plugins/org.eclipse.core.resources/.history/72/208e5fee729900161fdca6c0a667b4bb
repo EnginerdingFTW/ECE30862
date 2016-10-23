@@ -14,7 +14,6 @@ public class Player extends Creature {
         Animation deadLeft, Animation deadRight)
     {
         super(left, right, deadLeft, deadRight);
-        
     }
 
 
@@ -57,8 +56,8 @@ public class Player extends Creature {
         }
     }
     
-    public void shooting(){
-    	ammo.shooting(this);
+    public void shooting(TileMap tile){
+    	ammo.shooting(this, tile);
     }
     
 
