@@ -2,22 +2,14 @@
 public class ScoreKeep{
 	
 	public int Score;
-	public Player CurrPlayer;
 	
-	
-	public ScoreKeep(Player p1)
+	public ScoreKeep()
 	{
 		Score = 0;
-		CurrPlayer = p1;
 	}
 	
-	public void UpdateScore(Creature npc)
+	public void IncreaseScore()
 	{
-		if(npc.getState() == Creature.STATE_DYING)
-		{
-			Score+=1;
-		}
-		
+		Score+=1;
 	}
-
 }
