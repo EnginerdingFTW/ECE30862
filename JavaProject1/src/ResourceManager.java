@@ -105,6 +105,7 @@ public class ResourceManager {
             }
         }
         Amunition.SetMap(map);
+        Grub.SetMap(map);
         return map;
     }
 

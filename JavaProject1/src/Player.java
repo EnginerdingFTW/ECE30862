@@ -58,7 +58,13 @@ public class Player extends Creature {
     }
     
     public void shooting(){
-    	ammo.shooting(this);
+    	ammo.start(this);
+//    	ammo.shooting(this);
+//    	System.out.println("finished shooting?");
+    }
+    
+    public void stopShooting(){
+    	ammo.stop();
 //    	System.out.println("finished shooting?");
     }
     

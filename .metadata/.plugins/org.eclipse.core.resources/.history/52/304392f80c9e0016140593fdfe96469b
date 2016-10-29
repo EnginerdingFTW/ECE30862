@@ -1,0 +1,54 @@
+import java.util.Timer;
+import java.math.*;
+
+
+/**
+    A Grub is a Creature that moves slowly on the ground.
+*/
+public class Grub extends Creature {
+
+	private float reactionTime = 0.5f;
+	private static TileMap map;
+	private long playerDist = 300;
+	
+    public Grub(Animation left, Animation right,
+        Animation deadLeft, Animation deadRight)
+    {
+        super(left, right, deadLeft, deadRight);
+    	Timer tim = new Timer();
+		tim.schedule(new PlayerWatcher(), 0);
+    }
+    
+    public static void SetMap(TileMap m)
+    {
+    	map = m;
+    }
+    
+    
+    private class PlayerWatcher extends java.util.TimerTask
+    {
+	    public void run()
+	    {
+	    	try
+	    	{
+	    		Thread.sleep((long) (reactionTime * 1000));
+	    	}
+	    	catch (Exception e)
+	    	{
+	    		System.out.println("ERROR");
+	    	}
+	    	Player p = (Player)map.getPlayer();
+	    	float distx = p.getX() - getX();
+	    	float disty = p.getY() - getY();
+	    	M
+	    	float total = (Math.pow((double)distx, 2) + Math.pow((double)disty, 2));
+	    	if (distx < )
+	    }
+    }
+
+
+    public float getMaxSpeed() {
+        return 0.05f;
+    }
+
+}

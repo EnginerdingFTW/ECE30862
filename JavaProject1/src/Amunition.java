@@ -8,16 +8,22 @@ public class Amunition {
 	public boolean canShoot = true;
 	private boolean dir = false;
 	private boolean lastDir = true;
-	private static float FIRE_RATE = 1.5f;
+	private static float FIRE_RATE = 0.1f;
 	private static float FIRE_VEL = 2.0f;
 	private Sprite ammo;
 	private static TileMap tilemap;
 	private String filename = "images/amunition.png";
 	public boolean playerOwned = false;
+	private boolean triggerPulled = false;
+	
+	private int shotCount = 0;
+	private Sprite sp;
 	
 	public Amunition(float fire_rate)
 	{
 		this.FIRE_RATE = fire_rate;	
+		Timer tim = new Timer();
+		tim.schedule(new TriggerWatcher(), 0);
 	}
 	
 	public static void SetMap(TileMap tile)
@@ -37,6 +43,17 @@ public class Amunition {
     		spawnInstance(sprite);
     	}	
 	 }
+	
+	public void start(Sprite s)
+	{ 
+		triggerPulled = true;
+		sp = s;
+	}
+	
+	public void stop()
+	{ 
+		triggerPulled = false;
+	}
 	
 	private void spawnInstance(Sprite sprite)
 	{
@@ -89,6 +106,44 @@ public class Amunition {
 	    	}
 //	    	System.out.println("make it to the end...?");
 	    	canShoot = true;
+	    	
+	    }
+    }
+    
+    private class TriggerWatcher extends java.util.TimerTask
+    {
+	    public void run()
+	    {
+	    	while (true)
+	    	{
+//	    		System.out.println("looping! - triggerPulled= " + triggerPulled);
+		    	try
+		    	{
+		    		Thread.sleep((long) (FIRE_RATE * 100));
+		    		if (shotCount >= 10)
+		    		{
+		    			Thread.sleep((long) (1000));
+		    		}
+		    	}
+		    	catch (Exception e)
+		    	{
+		    		System.out.println("ERROR");
+		    	}
+		    	if (triggerPulled)
+		    	{
+		    		if (canShoot)
+		    		{
+			    		System.out.println("shooting!");
+			    		shooting(sp);
+			    		shotCount++;
+		    		}
+		    	}
+		    	else
+		    	{
+		    		shotCount = 0;
+		    	}
+		    	
+	    	}
 	    	
 	    }
     }
