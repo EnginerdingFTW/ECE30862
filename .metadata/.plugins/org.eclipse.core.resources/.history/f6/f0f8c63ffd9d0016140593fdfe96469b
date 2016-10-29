@@ -276,12 +276,8 @@ public class GameManager extends GameCore {
             if (sprite instanceof FiredShot || otherSprite instanceof FiredShot)
             {
 //            	System.out.println("fired shot in getSpriteColission");
-            	if (sprite instanceof Player || otherSprite instanceof Player)
-            	{
-            		if (t)
-                		System.out.println("t = true");	
-            		t = false;
-            	}
+            	if (t)
+            		System.out.println("t = true");
             }
             if (t) {
                 // collision found, return the Sprite

@@ -280,7 +280,6 @@ public class GameManager extends GameCore {
             	{
             		if (t)
                 		System.out.println("t = true");	
-            		t = false;
             	}
             }
             if (t) {

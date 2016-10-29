@@ -50,7 +50,19 @@ public class Amunition {
 		}
 		ammo = new FiredShot(an, owned);
 
-		dir = sprite.getDirection();
+		
+		if (sprite.getVelocityX() > 0.2f)
+		{
+			dir = true;
+		}
+		else if (sprite.getVelocityX() < -0.2f)
+		{
+			dir = false;
+		}
+		else
+		{
+			dir = lastDir;
+		}
 		
 		if (dir == true)
 		{

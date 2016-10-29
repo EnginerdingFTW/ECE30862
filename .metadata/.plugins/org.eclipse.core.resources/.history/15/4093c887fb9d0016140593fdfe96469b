@@ -28,8 +28,11 @@ public class Sprite {
         on the velocity.
     */
     public void update(long elapsedTime) {
+    	System.out.println("updating sprite");
         x += dx * elapsedTime;
+        System.out.println("dx = " + dx);
         y += dy * elapsedTime;
+        System.out.println("dy = " + dy);
         anim.update(elapsedTime);
     }
 
@@ -108,14 +111,6 @@ public class Sprite {
         per millisecond.
     */
     public void setVelocityX(float dx) {
-    	if (dx > 0.1f)
-    	{
-    		direction = true;
-    	}
-    	else if (dx < -0.1f)
-    	{
-    		direction = false;
-    	}
         this.dx = dx;
     }
 

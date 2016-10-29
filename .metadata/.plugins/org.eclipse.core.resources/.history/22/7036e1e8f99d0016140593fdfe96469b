@@ -267,23 +267,19 @@ public class GameManager extends GameCore {
 //            		System.out.println("NOT A PLAYER");
 //            	}
 //            }
-
-//            if (sprite instanceof Player && otherSprite instanceof FiredShot && ((FiredShot)otherSprite).playerOwned == true)
-//            {
-////            	System.out.println("ignore collision");
-//            }
-            boolean t = isCollision(sprite, otherSprite);
-            if (sprite instanceof FiredShot || otherSprite instanceof FiredShot)
+            if (sprite instanceof Player)
             {
-//            	System.out.println("fired shot in getSpriteColission");
-            	if (sprite instanceof Player || otherSprite instanceof Player)
-            	{
-            		if (t)
-                		System.out.println("t = true");	
-            		t = false;
-            	}
+            	System.out.println("is a player");
             }
-            if (t) {
+            else
+            {
+            	
+            }
+            if (sprite instanceof Player && otherSprite instanceof FiredShot && ((FiredShot)otherSprite).playerOwned == true)
+            {
+            	System.out.println("ignore collision");
+            }
+            else if (isCollision(sprite, otherSprite)) {
                 // collision found, return the Sprite
                 return otherSprite;
             }
@@ -362,8 +358,8 @@ public class GameManager extends GameCore {
         
 //        if (creature instanceof FiredShot)
 //        {
-////        	System.out.println("bullet in update creature");
-////        	return;
+//        	System.out.println("bullet in update creature");
+//        	return;
 //        }
         
         
@@ -438,10 +434,6 @@ public class GameManager extends GameCore {
 //        else if (collisionSprite instanceof FiredShot){
 //        	System.out.println("FIRED SHOT COLLIDE");
 //        }
-        else if (collisionSprite instanceof FiredShot)
-        {
-        	System.out.println("ignore colission in checkPlayerCollision");
-        }
         else if (collisionSprite instanceof Creature) {
             Creature badguy = (Creature)collisionSprite;
             if (canKill) {

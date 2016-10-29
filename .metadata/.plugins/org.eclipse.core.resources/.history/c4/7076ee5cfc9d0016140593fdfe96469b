@@ -2,7 +2,7 @@ import java.util.Timer;
 
 public class FiredShot extends Creature {
 	public boolean playerOwned = false;
-	private float deathTimer = 0.5f;
+	private float deathTimer = 1.0f;
 	
 	public FiredShot(Animation shot, boolean owned)
 	{

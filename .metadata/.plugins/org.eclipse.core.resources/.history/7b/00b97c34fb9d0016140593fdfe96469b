@@ -28,6 +28,18 @@ public class Amunition {
 	
 	public void shooting(Sprite sprite)
 	{
+		if (sprite.getVelocityX() > 0.2f)
+		{
+			dir = true;
+		}
+		else if (sprite.getVelocityX() < -0.2f)
+		{
+			dir = false;
+		}
+		else
+		{
+			dir = lastDir;
+		}
 		lastDir = dir;
     	Timer timer = new Timer();
     	if (canShoot)
@@ -50,8 +62,6 @@ public class Amunition {
 		}
 		ammo = new FiredShot(an, owned);
 
-		dir = sprite.getDirection();
-		
 		if (dir == true)
 		{
 			ammo.setVelocityX(FIRE_VEL);

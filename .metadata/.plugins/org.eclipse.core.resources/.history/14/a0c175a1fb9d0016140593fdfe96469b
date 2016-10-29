@@ -108,14 +108,6 @@ public class Sprite {
         per millisecond.
     */
     public void setVelocityX(float dx) {
-    	if (dx > 0.1f)
-    	{
-    		direction = true;
-    	}
-    	else if (dx < -0.1f)
-    	{
-    		direction = false;
-    	}
         this.dx = dx;
     }
 

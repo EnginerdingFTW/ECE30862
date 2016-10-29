@@ -268,22 +268,11 @@ public class GameManager extends GameCore {
 //            	}
 //            }
 
-//            if (sprite instanceof Player && otherSprite instanceof FiredShot && ((FiredShot)otherSprite).playerOwned == true)
-//            {
-////            	System.out.println("ignore collision");
-//            }
-            boolean t = isCollision(sprite, otherSprite);
-            if (sprite instanceof FiredShot || otherSprite instanceof FiredShot)
+            if (sprite instanceof Player && otherSprite instanceof FiredShot && ((FiredShot)otherSprite).playerOwned == true)
             {
-//            	System.out.println("fired shot in getSpriteColission");
-            	if (sprite instanceof Player || otherSprite instanceof Player)
-            	{
-            		if (t)
-                		System.out.println("t = true");	
-            		t = false;
-            	}
+//            	System.out.println("ignore collision");
             }
-            if (t) {
+            else if (isCollision(sprite, otherSprite)) {
                 // collision found, return the Sprite
                 return otherSprite;
             }
@@ -360,11 +349,11 @@ public class GameManager extends GameCore {
         float newX = oldX + dx * elapsedTime;
 
         
-//        if (creature instanceof FiredShot)
-//        {
-////        	System.out.println("bullet in update creature");
-////        	return;
-//        }
+        if (creature instanceof FiredShot)
+        {
+        	System.out.println("bullet in update creature");
+//        	return;
+        }
         
         
         Point tile =
@@ -438,7 +427,7 @@ public class GameManager extends GameCore {
 //        else if (collisionSprite instanceof FiredShot){
 //        	System.out.println("FIRED SHOT COLLIDE");
 //        }
-        else if (collisionSprite instanceof FiredShot)
+        else if (colissionSprite instanceof FiredShot)
         {
         	System.out.println("ignore colission in checkPlayerCollision");
         }

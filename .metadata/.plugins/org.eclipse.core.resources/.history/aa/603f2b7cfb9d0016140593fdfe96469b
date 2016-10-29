@@ -9,6 +9,12 @@ public class Player extends Creature {
     private ScoreKeep score = new ScoreKeep();
     private Amunition ammo = new Amunition(FIRE_RATE);
     private boolean onGround;
+    private boolean direction = true;
+    
+    public boolean getDirection()
+    {
+    	return direction;
+    }
 
     public Player(Animation left, Animation right,
         Animation deadLeft, Animation deadRight)

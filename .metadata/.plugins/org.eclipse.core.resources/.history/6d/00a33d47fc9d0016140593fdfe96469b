@@ -273,16 +273,6 @@ public class GameManager extends GameCore {
 ////            	System.out.println("ignore collision");
 //            }
             boolean t = isCollision(sprite, otherSprite);
-            if (sprite instanceof FiredShot || otherSprite instanceof FiredShot)
-            {
-//            	System.out.println("fired shot in getSpriteColission");
-            	if (sprite instanceof Player || otherSprite instanceof Player)
-            	{
-            		if (t)
-                		System.out.println("t = true");	
-            		t = false;
-            	}
-            }
             if (t) {
                 // collision found, return the Sprite
                 return otherSprite;
@@ -360,11 +350,11 @@ public class GameManager extends GameCore {
         float newX = oldX + dx * elapsedTime;
 
         
-//        if (creature instanceof FiredShot)
-//        {
-////        	System.out.println("bullet in update creature");
-////        	return;
-//        }
+        if (creature instanceof FiredShot)
+        {
+        	System.out.println("bullet in update creature");
+//        	return;
+        }
         
         
         Point tile =

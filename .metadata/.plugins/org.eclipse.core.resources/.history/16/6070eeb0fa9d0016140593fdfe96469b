@@ -7,7 +7,7 @@ public class Amunition {
 
 	public boolean canShoot = true;
 	private boolean dir = false;
-	private boolean lastDir = true;
+	private boolean lastDir = false;
 	private static float FIRE_RATE = 1.5f;
 	private static float FIRE_VEL = 2.0f;
 	private Sprite ammo;
@@ -28,7 +28,18 @@ public class Amunition {
 	
 	public void shooting(Sprite sprite)
 	{
-		lastDir = dir;
+		if (sprite.getVelocityX() > 0)
+		{
+			dir = true;
+		}
+		else if (sprite.getVelocityX() < 0)
+		{
+			dir = false;
+		}
+		else
+		{
+			dir = lastDir;
+		}
     	Timer timer = new Timer();
     	if (canShoot)
     	{
@@ -50,8 +61,6 @@ public class Amunition {
 		}
 		ammo = new FiredShot(an, owned);
 
-		dir = sprite.getDirection();
-		
 		if (dir == true)
 		{
 			ammo.setVelocityX(FIRE_VEL);

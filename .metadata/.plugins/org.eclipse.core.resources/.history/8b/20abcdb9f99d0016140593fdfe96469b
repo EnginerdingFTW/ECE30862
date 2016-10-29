@@ -59,7 +59,7 @@ public class Player extends Creature {
     
     public void shooting(){
     	ammo.shooting(this);
-//    	System.out.println("finished shooting?");
+    	System.out.println("finished shooting?");
     }
     
 
