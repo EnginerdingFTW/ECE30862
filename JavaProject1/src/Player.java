@@ -1,4 +1,5 @@
 import java.util.Timer;
+import java.lang.*;
 /**
     The Player.
 */
@@ -10,14 +11,37 @@ public class Player extends Creature {
     private Amunition ammo = new Amunition(FIRE_RATE);
     private boolean onGround;
     public static int health;
+    private float lastposx;
+    private float lastposy;
+    private int timesincemove;
 
     public Player(Animation left, Animation right,
         Animation deadLeft, Animation deadRight)
     {
         super(left, right, deadLeft, deadRight);
         health = 20;
+        lastposx=this.getX();
+        lastposy=this.getY();
+        timesincemove = 0;
     }
 
+    public void regenration()
+    {
+    	if(timesincemove >= 1000)
+    	{
+    		health += 5;
+    		timesincemove = 0;
+    	}
+    	if(Math.abs(this.getX() - this.lastposx) >= 100)
+    	{
+    		this.lastposx=this.getX();
+    		health+=1;
+    	}
+    	if(this.getVelocityX() == 0 && this.getVelocityY() == 0)
+    	{
+    		timesincemove+=1;
+    	}
+    }
 
     public void collideHorizontal() {
         setVelocityX(0);

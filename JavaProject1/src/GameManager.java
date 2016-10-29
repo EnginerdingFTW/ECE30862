@@ -442,6 +442,10 @@ public class GameManager extends GameCore {
         		Creature bullet = (Creature)collisionSprite;
         		bullet.setState(Creature.STATE_DEAD);
         	}
+        	if(Player.health <= 0)
+        	{
+        		player.setState(Creature.STATE_DYING);
+        	}
         	
         }
         else if (collisionSprite instanceof Creature) {
