@@ -100,16 +100,16 @@ public class Amunition {
     {
 	    public void run()
 	    {
-//	    	System.out.println("I'M FIRING MY LASER! RAWRRRRRRRR");
+	    	System.out.println("I'M FIRING MY LASER! RAWRRRRRRRR");
 	    	try
 	    	{
-	    		Thread.sleep((long) (FIRE_RATE * 400));
+	    		Thread.sleep((long) (FIRE_RATE * 1000));
 	    	}
 	    	catch (Exception e)
 	    	{
 	    		System.out.println("ERROR");
 	    	}
-//	    	System.out.println("canShoot set to true");
+	    	System.out.println("make it to the end...?");
 	    	canShoot = true;
 	    	
 	    }
@@ -129,7 +129,7 @@ public class Amunition {
 	    	}
 	    	if (tempTriggerPulled == false)
 	    	{
-//	    		System.out.println("trigger pulled set false");
+	    		System.out.println("trigger pulled set false");
 	    		triggerPulled = false;
 	    		
 	    	}
@@ -147,7 +147,7 @@ public class Amunition {
 		    		Thread.sleep((long) (FIRE_RATE * 400));
 		    		if (shotCount >= 10)
 		    		{
-//		    			System.out.println("10 found");
+		    			System.out.println("10 found");
 		    			Thread.sleep((long) (1000));
 		    			shotCount = 0;
 		    		}
@@ -156,10 +156,10 @@ public class Amunition {
 		    	{
 		    		System.out.println("ERROR");
 		    	}
-//		    	System.out.println("looping! - triggerPulled= " + triggerPulled);
+		    	System.out.println("looping! - triggerPulled= " + triggerPulled);
 		    	if (triggerPulled)
 		    	{
-//		    		System.out.println("nah");
+		    		System.out.println("nah");
 		    		if (canShoot)
 		    		{
 //			    		System.out.println("shooting!");

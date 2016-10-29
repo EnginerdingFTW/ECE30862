@@ -15,7 +15,6 @@ public class Amunition {
 	private String filename = "images/amunition.png";
 	public boolean playerOwned = false;
 	private boolean triggerPulled = false;
-	private boolean tempTriggerPulled = false;
 	
 	private int shotCount = 0;
 	private Sprite sp;
@@ -49,15 +48,12 @@ public class Amunition {
 	public void start(Sprite s)
 	{ 
 		triggerPulled = true;
-		tempTriggerPulled = true;
 		sp = s;
 	}
 	
 	public void stop()
 	{ 
-		tempTriggerPulled = false;
-		Timer t = new Timer();
-		t.schedule(new ShortTimer(), 0);
+		triggerPulled = false;
 	}
 	
 	private void spawnInstance(Sprite sprite)
@@ -100,39 +96,18 @@ public class Amunition {
     {
 	    public void run()
 	    {
-//	    	System.out.println("I'M FIRING MY LASER! RAWRRRRRRRR");
+	    	System.out.println("I'M FIRING MY LASER! RAWRRRRRRRR");
 	    	try
 	    	{
-	    		Thread.sleep((long) (FIRE_RATE * 400));
+	    		Thread.sleep((long) (FIRE_RATE * 1000));
 	    	}
 	    	catch (Exception e)
 	    	{
 	    		System.out.println("ERROR");
 	    	}
-//	    	System.out.println("canShoot set to true");
+	    	System.out.println("make it to the end...?");
 	    	canShoot = true;
 	    	
-	    }
-    }
-    
-    private class ShortTimer extends java.util.TimerTask
-    {
-	    public void run()
-	    {
-	    	try
-	    	{
-	    		Thread.sleep((long) (500));
-	    	}
-	    	catch (Exception e)
-	    	{
-	    		System.out.println("ERROR");
-	    	}
-	    	if (tempTriggerPulled == false)
-	    	{
-//	    		System.out.println("trigger pulled set false");
-	    		triggerPulled = false;
-	    		
-	    	}
 	    }
     }
     
@@ -147,7 +122,7 @@ public class Amunition {
 		    		Thread.sleep((long) (FIRE_RATE * 400));
 		    		if (shotCount >= 10)
 		    		{
-//		    			System.out.println("10 found");
+		    			System.out.println("10 found");
 		    			Thread.sleep((long) (1000));
 		    			shotCount = 0;
 		    		}
@@ -159,7 +134,7 @@ public class Amunition {
 //		    	System.out.println("looping! - triggerPulled= " + triggerPulled);
 		    	if (triggerPulled)
 		    	{
-//		    		System.out.println("nah");
+		    		System.out.println("nah");
 		    		if (canShoot)
 		    		{
 //			    		System.out.println("shooting!");
