@@ -145,11 +145,11 @@ public class TileMapRenderer {
         }
         
         //draw score
-        g.setFont(new Font("TimesRoman", Font.PLAIN, 28));
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
 	     
-	    g.setColor(Color.yellow);
+	    g.setColor(Color.orange);
 	    
-	    g.drawString(ScoreKeep.Score, 30, 50);
+	    g.drawString("SCORE: "+Integer.toString(ScoreKeep.Score), 30, 50);
     }
 
 }

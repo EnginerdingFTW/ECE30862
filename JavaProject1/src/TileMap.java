@@ -10,7 +10,7 @@ import java.util.Iterator;
     map.
 */
 public class TileMap {
-
+	
     private Image[][] tiles;
     private LinkedList sprites;
     private Sprite player;

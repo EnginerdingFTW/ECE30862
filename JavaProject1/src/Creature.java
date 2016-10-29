@@ -17,7 +17,7 @@ public abstract class Creature extends Sprite {
     public static final int STATE_NORMAL = 0;
     public static final int STATE_DYING = 1;
     public static final int STATE_DEAD = 2;
-
+    private ScoreKeep score;
     private Animation left;
     private Animation right;
     private Animation deadLeft;
@@ -151,15 +151,25 @@ public abstract class Creature extends Sprite {
         }
         if (state == STATE_DYING && newAnim == left) {
             newAnim = deadLeft;
+            if(!(this instanceof Player))
+            {
+            	score.Score+=100;
+            }
+            
         }
         else if (state == STATE_DYING && newAnim == right) {
             newAnim = deadRight;
+            if(!(this instanceof Player))
+            {
+            	score.Score+=100;
+            }
         }
 
         // update the Animation
         if (anim != newAnim) {
             anim = newAnim;
             anim.start();
+            
         }
         else {
             anim.update(elapsedTime);
