@@ -7,14 +7,14 @@ public class ScoreKeep{
 	
 	public ScoreKeep()
 	{
-		Score = "0";
-		//ScrDraw.draw("0");
+		Score = "1";
+		ScrDraw.draw();
 	}
 	
 	public void IncreaseScore()
 	{
 		Score = Integer.toString(Integer.parseInt(Score) + 1);
-		//ScrDraw.draw(Score);
+		ScrDraw.draw();
 	}
 	
 }

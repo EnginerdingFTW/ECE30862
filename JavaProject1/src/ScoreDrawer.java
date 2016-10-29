@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 
 public class ScoreDrawer extends JPanel {
 
-	String score;
 	public void paint(Graphics g) {
 	    Dimension d = this.getPreferredSize();
 	    int fontSize = 60;
@@ -17,11 +16,12 @@ public class ScoreDrawer extends JPanel {
 	     
 	    g.setColor(Color.black);
 	    
-	    g.drawString(this.score, 30, 50);
+	    g.drawString(ScoreKeep.Score, 30, 50);
 	}
 
-	public void draw(String currscore) {
-	  	this.score = currscore;
+	public void draw() {
+		System.out.println(ScoreKeep.Score);
+	
 	    JFrame frame = new JFrame();
 	    frame.getContentPane().add(new ScoreDrawer());
 	
@@ -29,7 +29,6 @@ public class ScoreDrawer extends JPanel {
 	    frame.setSize(900,400);
 	    frame.setUndecorated(true);
 	    frame.setBackground(new Color(1.0f,1.0f,1.0f,0.0f));
-	    frame.toFront();
 	    frame.setVisible(true);
    
 	}
