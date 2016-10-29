@@ -3,24 +3,18 @@ import java.awt.*;
 public class ScoreKeep{
 	
 	public static String Score;
-	
+	private ScoreDrawer ScrDraw = new ScoreDrawer();
 	
 	public ScoreKeep()
 	{
 		Score = "0";
+		ScrDraw.draw("0");
 	}
 	
 	public void IncreaseScore()
 	{
 		Score = Integer.toString(Integer.parseInt(Score) + 1);
+		ScrDraw.draw(Score);
 	}
 	
-	public void paint(Graphics g)
-	{
-		Graphics2D g2 = (Graphics2D)g;
-		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		Font font = new Font("Serif", Font.PLAIN, 96);
-		g2.setFont(font);
-		g.drawString(Score, 40, 40);
-	}
 }
