@@ -143,6 +143,13 @@ public class TileMapRenderer {
                 ((Creature)sprite).wakeUp();
             }
         }
+        
+        //draw score
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 28));
+	     
+	    g.setColor(Color.yellow);
+	    
+	    g.drawString(ScoreKeep.Score, 30, 50);
     }
 
 }
