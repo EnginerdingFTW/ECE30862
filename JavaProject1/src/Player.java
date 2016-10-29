@@ -35,14 +35,14 @@ public class Player extends Creature {
     		health += 5;
     		timesincemove = 0;
     	}
-    	if(Math.abs(this.getX() - this.lastposx) >= 100)
+    	if(Math.abs(this.getX() - this.lastposx) >= 64)
     	{
     		this.lastposx=this.getX();
     		health+=1;
     	}
     	if(this.getVelocityX() == 0 && this.getVelocityY() == 0)
     	{
-    		timesincemove+=1;
+    		timesincemove+=100;
     	}
     }
 
