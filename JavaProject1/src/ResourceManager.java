@@ -348,7 +348,7 @@ public class ResourceManager {
         //create firedShot
         anim = new Animation();
         anim.addFrame(loadImage("images/amunition.png"),100);
-        firedShotSprite = new FiredShot(anim);
+        firedShotSprite = new FiredShot(anim, false);
     }
 
 }

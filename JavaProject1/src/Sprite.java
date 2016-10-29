@@ -66,8 +66,8 @@ public class Sprite {
     public int getWidth() {
     	if (this instanceof FiredShot)
     	{
-    		System.out.println("firedshot found");
-    		return 10;
+//    		System.out.println("firedshot found");
+    		return 50;
     	}
         return anim.getImage().getWidth(null);
     }
@@ -79,8 +79,8 @@ public class Sprite {
     public int getHeight() {
     	if (this instanceof FiredShot)
     	{
-    		System.out.println("firedshot found");
-    		return 10;
+//    		System.out.println("firedshot found");
+    		return 50;
     	}
         return anim.getImage().getHeight(null);
     }

@@ -1,0 +1,10 @@
+
+public class FiredShot extends Creature {
+	public boolean playerOwned = false;
+	
+	public FiredShot(Animation shot, boolean owned)
+	{
+		super(shot, (Animation)shot.clone(), (Animation)shot.clone(), (Animation)shot.clone());
+		playerOwned = owned;
+	}
+}

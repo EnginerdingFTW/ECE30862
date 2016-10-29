@@ -69,7 +69,7 @@ public class GameAction {
         by release().
     */
     public synchronized void tap() {
-        System.out.println(name + " was pressed");
+//        System.out.println(name + " was pressed");
         press();
         release();
     }
@@ -79,7 +79,7 @@ public class GameAction {
         Signals that the key was pressed.
     */
     public synchronized void press() {
-        System.out.println(name + " was pressed");
+//        System.out.println(name + " was pressed");
     	press(1);
     }
 
@@ -89,7 +89,7 @@ public class GameAction {
         times, or that the mouse move a spcified distance.
     */
     public synchronized void press(int amount) {
-    	System.out.println("GameAction.press()");
+
         if (state != STATE_WAITING_FOR_RELEASE) {
             this.amount+=amount;
             state = STATE_PRESSED;
@@ -102,7 +102,7 @@ public class GameAction {
         Signals that the key was released
     */
     public synchronized void release() {
-    	System.out.println("GameAction class, method = release()");
+//    	System.out.println("GameAction class, method = release()");
         state = STATE_RELEASED;
     }
 
