@@ -6,7 +6,7 @@ public class Player extends Creature {
 
     private static final float JUMP_SPEED = -.95f;
     private static final float FIRE_RATE = 1.25f;
-    private ScoreKeep score = new ScoreKeep();
+    private ScoreKeep scoreKeeper = new ScoreKeep();
     private Amunition ammo = new Amunition(FIRE_RATE);
     private boolean onGround;
 
@@ -70,7 +70,7 @@ public class Player extends Creature {
     
     public void Score()
     {
-    	score.IncreaseScore();
+    	scoreKeeper.IncreaseScore();
     }
 
 }
