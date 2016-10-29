@@ -1,4 +1,5 @@
 import java.util.Timer;
+
 import javax.swing.ImageIcon;
 
 
@@ -9,18 +10,12 @@ public class Amunition {
 	private static float FIRE_RATE = 1.25f;
 	private static float FIRE_VEL = 2.0f;
 	private Sprite ammo;
-	private Animation anim;
 	private static TileMap tilemap;
+	private String filename = "images/amunition.png";
 	
 	public Amunition(float fire_rate)
 	{
-		this.FIRE_RATE = fire_rate;
-		String filename = "images/amunition.png";
-		Animation an = new Animation();
-		an.addFrame(new ImageIcon(filename).getImage(), 10);
-		an.addFrame(new ImageIcon(filename).getImage(), 10);
-		//ammo = new Sprite(an);
-		
+		this.FIRE_RATE = fire_rate;	
 	}
 	
 	public static void SetMap(TileMap tile)
@@ -31,6 +26,7 @@ public class Amunition {
 	
 	public void shooting(Sprite sprite)
 	{
+		System.out.println("shooting.");
 		if (sprite.getVelocityX() > 0)
 		{
 			dir = true;
@@ -50,12 +46,15 @@ public class Amunition {
 	
 	private void spawnInstance(Sprite sprite)
 	{
-		ammo = new Sprite(anim);
-		ammo.setX(sprite.getX());
-		ammo.setY(sprite.getY());
-		System.out.println("x = " + sprite.getX() + "   y = " + sprite.getY());
+		Animation an = new Animation();
+		an.addFrame(new ImageIcon(filename).getImage(), 10);
+		an.addFrame(new ImageIcon(filename).getImage(), 10);
+		ammo = new FiredShot(an);
+		ammo.setX(sprite.getX() + 10);
+		ammo.setY(sprite.getY() + 10);
+//		System.out.println("x = " + sprite.getX() + "   y = " + sprite.getY());
 		
-		//tilemap.addSprite(ammo);
+		tilemap.addSprite(ammo);
 		
 		if (dir == true)
 		{
@@ -65,6 +64,7 @@ public class Amunition {
 		{
 			ammo.setVelocityX(FIRE_VEL);
 		}
+		System.out.println("yay");
 	}
 	
 	
@@ -73,14 +73,15 @@ public class Amunition {
 	    public void run()
 	    {
 	    	System.out.println("I'M FIRING MY LASER! RAWRRRRRRRR");
-	    	try
-	    	{
-	    		Thread.sleep((long) FIRE_RATE * 1000);
-	    	}
-	    	catch (Exception e)
-	    	{
-	    		
-	    	}
+//	    	try
+//	    	{
+//	    		Thread.sleep((long) FIRE_RATE * 1000);
+//	    	}
+//	    	catch (Exception e)
+//	    	{
+//	    		System.out.println("ERROR");
+//	    	}
+	    	System.out.println("make it to the end...?");
 	    	canShoot = true;
 	    	
 	    }

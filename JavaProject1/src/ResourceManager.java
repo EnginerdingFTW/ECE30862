@@ -25,6 +25,12 @@ public class ResourceManager {
     private Sprite goalSprite;
     private Sprite grubSprite;
     private Sprite flySprite;
+    private Sprite firedShotSprite;
+    
+    public Sprite getFiredShot()
+    {
+    	return firedShotSprite;
+    }
 
     /**
         Creates a new ResourceManager with the specified
@@ -338,6 +344,11 @@ public class ResourceManager {
         anim.addFrame(loadImage("music3.png"), 150);
         anim.addFrame(loadImage("music2.png"), 150);
         musicSprite = new PowerUp.Music(anim);
+        
+        //create firedShot
+        anim = new Animation();
+        anim.addFrame(loadImage("images/amunition.png"),100);
+        firedShotSprite = new FiredShot(anim);
     }
 
 }

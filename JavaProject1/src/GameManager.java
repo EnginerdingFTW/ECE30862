@@ -92,7 +92,6 @@ public class GameManager extends GameCore {
 
 
     private void initInput() {
-        System.out.println("in initInput in GameManager class.");
         moveLeft = new GameAction("moveLeft");
         moveRight = new GameAction("moveRight");
         shoot = new GameAction("shoot");
@@ -220,7 +219,6 @@ public class GameManager extends GameCore {
         if (s1 == s2) {
             return false;
         }
-
         // if one of the Sprites is a dead Creature, return false
         if (s1 instanceof Creature && !((Creature)s1).isAlive()) {
             return false;
@@ -228,14 +226,23 @@ public class GameManager extends GameCore {
         if (s2 instanceof Creature && !((Creature)s2).isAlive()) {
             return false;
         }
-
         // get the pixel location of the Sprites
         int s1x = Math.round(s1.getX());
         int s1y = Math.round(s1.getY());
         int s2x = Math.round(s2.getX());
         int s2y = Math.round(s2.getY());
 
-        // check if the two sprites' boundaries intersect
+
+        if (s2 instanceof FiredShot)
+        {
+        	System.out.println("hello");
+        }
+
+//        System.out.println(s1x < s2x + s2.getWidth() &&
+//            s2x < s1x + s1.getWidth() &&
+//            s1y < s2y + s2.getHeight() &&
+//            s2y < s1y + s1.getHeight());
+        // check if the  two sprites' boundaries intersect
         return (s1x < s2x + s2.getWidth() &&
             s2x < s1x + s1.getWidth() &&
             s1y < s2y + s2.getHeight() &&
@@ -253,7 +260,11 @@ public class GameManager extends GameCore {
         Iterator i = map.getSprites();
         while (i.hasNext()) {
             Sprite otherSprite = (Sprite)i.next();
-            if (isCollision(sprite, otherSprite)) {
+            if (otherSprite instanceof FiredShot)
+            {
+            	System.out.println("fired shot found in getSpriteCollision");
+            }
+            else if (isCollision(sprite, otherSprite)) {
                 // collision found, return the Sprite
                 return otherSprite;
             }
@@ -271,7 +282,6 @@ public class GameManager extends GameCore {
     public void update(long elapsedTime) {
         Creature player = (Creature)map.getPlayer();
 
-
         // player is dead! start map over
         if (player.getState() == Creature.STATE_DEAD) {
             map = resourceManager.reloadMap();
@@ -280,15 +290,19 @@ public class GameManager extends GameCore {
 
         // get keyboard/mouse input
         checkInput(elapsedTime);
-
+ 
         // update player
         updateCreature(player, elapsedTime);
         player.update(elapsedTime);
 
         // update other sprites
         Iterator i = map.getSprites();
+  
         while (i.hasNext()) {
             Sprite sprite = (Sprite)i.next();
+//            if (sprite instanceof FiredShot){
+//            	System.out.println("did it break?");
+//            }
             if (sprite instanceof Creature) {
                 Creature creature = (Creature)sprite;
                 if (creature.getState() == Creature.STATE_DEAD) {
@@ -301,6 +315,7 @@ public class GameManager extends GameCore {
             // normal update
             sprite.update(elapsedTime);
         }
+  
     }
 
 
@@ -311,17 +326,27 @@ public class GameManager extends GameCore {
     private void updateCreature(Creature creature,
         long elapsedTime)
     {
-
+    
         // apply gravity
         if (!creature.isFlying()) {
             creature.setVelocityY(creature.getVelocityY() +
                 GRAVITY * elapsedTime);
         }
 
+      
         // change x
         float dx = creature.getVelocityX();
         float oldX = creature.getX();
         float newX = oldX + dx * elapsedTime;
+
+        
+//        if (creature instanceof FiredShot)
+//        {
+//        	System.out.println("bullet in update creature");
+//        	return;
+//        }
+        
+        
         Point tile =
             getTileCollision(creature, newX, creature.getY());
         if (tile == null) {
@@ -389,6 +414,9 @@ public class GameManager extends GameCore {
         Sprite collisionSprite = getSpriteCollision(player);
         if (collisionSprite instanceof PowerUp) {
             acquirePowerUp((PowerUp)collisionSprite);
+        }
+        else if (collisionSprite instanceof FiredShot){
+        	System.out.println("FIRED SHOT COLLIDE");
         }
         else if (collisionSprite instanceof Creature) {
             Creature badguy = (Creature)collisionSprite;

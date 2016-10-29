@@ -23,8 +23,11 @@ public class Sprite {
         on the velocity.
     */
     public void update(long elapsedTime) {
+    	System.out.println("updating sprite");
         x += dx * elapsedTime;
+        System.out.println("dx = " + dx);
         y += dy * elapsedTime;
+        System.out.println("dy = " + dy);
         anim.update(elapsedTime);
     }
 
@@ -61,6 +64,11 @@ public class Sprite {
         current image.
     */
     public int getWidth() {
+    	if (this instanceof FiredShot)
+    	{
+    		System.out.println("firedshot found");
+    		return 10;
+    	}
         return anim.getImage().getWidth(null);
     }
 
@@ -69,6 +77,11 @@ public class Sprite {
         current image.
     */
     public int getHeight() {
+    	if (this instanceof FiredShot)
+    	{
+    		System.out.println("firedshot found");
+    		return 10;
+    	}
         return anim.getImage().getHeight(null);
     }
 

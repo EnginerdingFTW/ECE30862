@@ -1,0 +1,8 @@
+
+public class FiredShot extends Creature {
+	public FiredShot()
+	{
+		
+		
+	}
+}

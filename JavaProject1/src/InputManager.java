@@ -132,7 +132,7 @@ public class InputManager extends KeyAdapter implements MouseListener,
     */
     public void mapToKey(GameAction gameAction, int keyCode) {
         keyActions[keyCode] = gameAction;
-        System.out.println("mapped    gameAction: " + gameAction.name + "  to keyCode: " + keyCode);
+//        System.out.println("mapped    gameAction: " + gameAction.name + "  to keyCode: " + keyCode);
     }
 
 
@@ -275,7 +275,7 @@ public class InputManager extends KeyAdapter implements MouseListener,
 
     private GameAction getKeyAction(KeyEvent e) {
         int keyCode = e.getKeyCode();
-        System.out.println("getKeyAction inside InputManager class");
+//        System.out.println("getKeyAction inside InputManager class");
         if (keyCode < keyActions.length) {
             return keyActions[keyCode];
         }
@@ -316,14 +316,14 @@ public class InputManager extends KeyAdapter implements MouseListener,
     // from the KeyListener interface
     @Override
     public void keyPressed(KeyEvent e) {
-    	System.out.println("keyPressed inside InputManager class");
+//    	System.out.println("keyPressed inside InputManager class");
 
         GameAction gameAction = getKeyAction(e);
         if (gameAction != null) {
             gameAction.press();
         }
         // make sure the key isn't processed for anything else
-        System.out.println("keyPressed inside InputManager class");
+//        System.out.println("keyPressed inside InputManager class");
         e.consume();
 
     }
@@ -332,7 +332,7 @@ public class InputManager extends KeyAdapter implements MouseListener,
     // from the KeyListener interface
     @Override
     public void keyReleased(KeyEvent e) {
-    	System.out.println("keyReleased inside InputManager class");
+//    	System.out.println("keyReleased inside InputManager class");
   
         GameAction gameAction = getKeyAction(e);
         if (gameAction != null) {
@@ -347,7 +347,7 @@ public class InputManager extends KeyAdapter implements MouseListener,
     // from the KeyListener interface
     public void keyTyped(KeyEvent e) {
         // make sure the key isn't processed for anything else
-    	System.out.println(" key typed    in keyTyped inside InputManager class");
+//    	System.out.println(" key typed    in keyTyped inside InputManager class");
         e.consume();
     }
 
