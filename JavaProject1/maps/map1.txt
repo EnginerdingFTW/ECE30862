@@ -9,12 +9,14 @@
 #   1       Bad Guy 1 (grub)
 #   2       Bad Guy 2 (fly)
  
-A                                                                                       A
-A                                                                                       A
-A                                                                                       A                                                                
-A                                                                                       A
-A                                                                                       A
-A                                                                                       A
-A                         1                                                             A
-A                                                                                       A
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                                                                                       A
+                                                                                       A
+                                                                                       A
+                                                                                       A
+                                                                                       A                                                                
+                                                                                       A
+                                                                                       A
+                                                                                       A
+                         1                               1                   1         A
+                                                                                       A
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA

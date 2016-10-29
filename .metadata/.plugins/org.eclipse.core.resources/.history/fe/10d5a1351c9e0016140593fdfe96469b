@@ -37,9 +37,10 @@ public class Amunition {
 	{
 		lastDir = dir;
     	Timer timer = new Timer();
-//    	System.out.println("SHOOTING");
+    	System.out.println("SHOOTING");
     	if (canShoot)
     	{
+    		System.out.println("CAN SHOOT");
     		canShoot = false;
     		timer.schedule(new FireRound(), 0);
     		spawnInstance(sprite);
@@ -66,7 +67,6 @@ public class Amunition {
 		an.addFrame(new ImageIcon(filename).getImage(), 10);
 		an.addFrame(new ImageIcon(filename).getImage(), 10);
 		
-//		System.out.println("spawning instance");
 		boolean owned = false;
 		if (sprite instanceof Player)
 		{
@@ -74,7 +74,6 @@ public class Amunition {
 		}
 		ammo = new FiredShot((Animation)an.clone(), owned);
 
-		
 		dir = sprite.getDirection();
 		
 		if (dir == true)

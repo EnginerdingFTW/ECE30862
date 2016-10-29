@@ -66,14 +66,17 @@ public class Amunition {
 		an.addFrame(new ImageIcon(filename).getImage(), 10);
 		an.addFrame(new ImageIcon(filename).getImage(), 10);
 		
-//		System.out.println("spawning instance");
+		System.out.println("spawning instance");
 		boolean owned = false;
 		if (sprite instanceof Player)
 		{
 			owned = true;
 		}
 		ammo = new FiredShot((Animation)an.clone(), owned);
-
+//		if (ammo instanceof FiredShot)
+//		{
+//			System.out.println((Fammo.playerOwned);
+//		}
 		
 		dir = sprite.getDirection();
 		

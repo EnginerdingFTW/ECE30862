@@ -10,7 +10,7 @@ public class Amunition {
 	private boolean lastDir = true;
 	private static float FIRE_RATE = 0.01f;
 	private static float FIRE_VEL = 1.0f;
-	private Sprite ammo;
+	private FiredShot ammo;
 	private static TileMap tilemap;
 	private String filename = "images/amunition.png";
 	public boolean playerOwned = false;
@@ -25,6 +25,11 @@ public class Amunition {
 		this.FIRE_RATE = fire_rate;	
 		Timer tim = new Timer();
 		tim.schedule(new TriggerWatcher(), 0);
+		
+		Animation an = new Animation();
+		an.addFrame(new ImageIcon(filename).getImage(), 10);
+		an.addFrame(new ImageIcon(filename).getImage(), 10);
+		ammo = new FiredShot(an, false);
 	}
 	
 	public static void SetMap(TileMap tile)
@@ -37,7 +42,7 @@ public class Amunition {
 	{
 		lastDir = dir;
     	Timer timer = new Timer();
-//    	System.out.println("SHOOTING");
+    	System.out.println("SHOOTING");
     	if (canShoot)
     	{
     		canShoot = false;
@@ -62,19 +67,18 @@ public class Amunition {
 	
 	private void spawnInstance(Sprite sprite)
 	{
-		Animation an = new Animation();
-		an.addFrame(new ImageIcon(filename).getImage(), 10);
-		an.addFrame(new ImageIcon(filename).getImage(), 10);
+//		Animation an = new Animation();
+//		an.addFrame(new ImageIcon(filename).getImage(), 10);
+//		an.addFrame(new ImageIcon(filename).getImage(), 10);
 		
-//		System.out.println("spawning instance");
 		boolean owned = false;
 		if (sprite instanceof Player)
 		{
 			owned = true;
+			ammo.
 		}
-		ammo = new FiredShot((Animation)an.clone(), owned);
+		ammo = new FiredShot(an, owned);
 
-		
 		dir = sprite.getDirection();
 		
 		if (dir == true)

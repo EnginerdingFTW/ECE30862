@@ -83,7 +83,6 @@ public class Grub extends Creature {
 		    	
 		    	if (!isAlive())
 		    	{
-		    		ammo.stop();
 		    		break;
 		    	}
 	    	}

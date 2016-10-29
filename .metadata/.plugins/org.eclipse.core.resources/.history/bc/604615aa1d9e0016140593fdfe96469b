@@ -80,12 +80,6 @@ public class Grub extends Creature {
 		    			shootNext = true;
 		    		}
 		    	}
-		    	
-		    	if (!isAlive())
-		    	{
-		    		ammo.stop();
-		    		break;
-		    	}
 	    	}
 	    }
     }
