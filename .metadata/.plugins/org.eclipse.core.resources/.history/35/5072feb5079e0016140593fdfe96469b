@@ -69,7 +69,7 @@ public class Amunition {
 		ammo.setY(sprite.getY() + 50);
 		
 		tilemap.addSprite(ammo);
-//		System.out.println("finished spawning instance");
+		System.out.println("finished spawning instance");
 		
 	}
 	
@@ -81,7 +81,7 @@ public class Amunition {
 //	    	System.out.println("I'M FIRING MY LASER! RAWRRRRRRRR");
 	    	try
 	    	{
-	    		Thread.sleep((long) (FIRE_RATE * 1000));
+	    		Thread.sleep((long) FIRE_RATE * 1000);
 	    	}
 	    	catch (Exception e)
 	    	{

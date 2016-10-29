@@ -343,7 +343,7 @@ public class GameManager extends GameCore {
                 if (collisionSprite instanceof FiredShot && !(creature instanceof Player))
                 {
                 	creature.setState(Creature.STATE_DYING);
-                	((FiredShot)collisionSprite).setState(Creature.STATE_DEAD);
+                	*(FiredShot)collisionSprite).setState(Creature.STATE_DEAD);
                 }
                 
                 if (creature.getState() == Creature.STATE_DEAD) {

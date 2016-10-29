@@ -81,7 +81,7 @@ public class Amunition {
 //	    	System.out.println("I'M FIRING MY LASER! RAWRRRRRRRR");
 	    	try
 	    	{
-	    		Thread.sleep((long) (FIRE_RATE * 1000));
+	    		Thread.sleep((long) FIRE_RATE * 1000);
 	    	}
 	    	catch (Exception e)
 	    	{
