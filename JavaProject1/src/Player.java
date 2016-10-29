@@ -73,10 +73,5 @@ public class Player extends Creature {
     public float getMaxSpeed() {
         return 0.5f;
     }
-    
-    public void Score()
-    {
-    	scoreKeeper.IncreaseScore();
-    }
 
 }
