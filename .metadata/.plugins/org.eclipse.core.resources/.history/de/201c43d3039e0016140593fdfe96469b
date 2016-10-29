@@ -69,7 +69,6 @@ public class Amunition {
 		ammo.setY(sprite.getY() + 50);
 		
 		tilemap.addSprite(ammo);
-		System.out.println("finished spawning instance");
 		
 	}
 	

@@ -240,12 +240,9 @@ public class GameManager extends GameCore {
         // check if the  two sprites' boundaries intersect
         if ((s1 instanceof FiredShot && s2 instanceof FiredShot) ||(s1 instanceof Player && s2 instanceof FiredShot))
         {
+        	System.out.println("isCollision() - return false");
         	return false;
         }
-//        else if ((s1 instanceof FiredShot && s2 instanceof Creature) || (s1 instanceof Creature && s2 instanceof FiredShot))
-//        {
-//        	System.out.println("firedshot and creature");	
-//        }
         return (s1x < s2x + s2.getWidth() &&
             s2x < s1x + s1.getWidth() &&
             s1y < s2y + s2.getHeight() &&
@@ -331,7 +328,6 @@ public class GameManager extends GameCore {
                 if (collisionSprite instanceof FiredShot && !(creature instanceof Player))
                 {
                 	System.out.println("YOU SHOULD DIE");
-                	creature.setState(Creature.STATE_DEAD);
                 }
                 
                 if (creature.getState() == Creature.STATE_DEAD) {

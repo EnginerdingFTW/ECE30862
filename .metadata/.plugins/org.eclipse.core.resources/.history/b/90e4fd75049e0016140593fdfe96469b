@@ -24,7 +24,7 @@ public class FiredShot extends Creature {
 	    	{
 	    		System.out.println("ERROR");
 	    	}
-//	    	setState(STATE_DEAD);
+	    	setState(STATE_DEAD);
 	    }
     }
 }
