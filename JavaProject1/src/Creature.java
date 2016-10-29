@@ -153,6 +153,14 @@ public abstract class Creature extends Sprite {
             newAnim = deadLeft;
             if(!(this instanceof Player))
             {
+            	if(Player.health <= 30)
+            	{
+            		Player.health+=10;
+            	}
+            	else
+            	{
+            		Player.health+=40;
+            	}
             	score.Score+=100;
             }
             
@@ -161,6 +169,14 @@ public abstract class Creature extends Sprite {
             newAnim = deadRight;
             if(!(this instanceof Player))
             {
+            	if(Player.health <= 30)
+            	{
+            		Player.health+=10;
+            	}
+            	else
+            	{
+            		Player.health+=40;
+            	}
             	score.Score+=100;
             }
         }

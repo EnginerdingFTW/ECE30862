@@ -9,12 +9,13 @@ public class Player extends Creature {
     private ScoreKeep scoreKeeper = new ScoreKeep();
     private Amunition ammo = new Amunition(FIRE_RATE);
     private boolean onGround;
+    public static int health;
 
     public Player(Animation left, Animation right,
         Animation deadLeft, Animation deadRight)
     {
         super(left, right, deadLeft, deadRight);
-        
+        health = 20;
     }
 
 

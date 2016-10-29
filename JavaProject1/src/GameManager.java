@@ -434,6 +434,16 @@ public class GameManager extends GameCore {
         if (collisionSprite instanceof PowerUp) {
             acquirePowerUp((PowerUp)collisionSprite);
         }
+        else if (collisionSprite instanceof FiredShot)
+        {
+        	if(((Creature) collisionSprite).getState()==Creature.STATE_NORMAL)
+        	{
+        		Player.health-=5;
+        		Creature bullet = (Creature)collisionSprite;
+        		bullet.setState(Creature.STATE_DEAD);
+        	}
+        	
+        }
         else if (collisionSprite instanceof Creature) {
             Creature badguy = (Creature)collisionSprite;
             if (canKill) {

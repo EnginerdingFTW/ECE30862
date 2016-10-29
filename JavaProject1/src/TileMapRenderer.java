@@ -149,7 +149,7 @@ public class TileMapRenderer {
 	     
 	    g.setColor(Color.orange);
 	    
-	    g.drawString("SCORE: "+Integer.toString(ScoreKeep.Score), 30, 50);
+	    g.drawString("SCORE: "+Integer.toString(ScoreKeep.Score) + "    HEALTH: " + Player.health, 30, 50);
     }
 
 }
