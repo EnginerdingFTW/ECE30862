@@ -53,8 +53,6 @@ public class Amunition {
 		ammo = new Sprite(anim);
 		ammo.setX(sprite.getX());
 		ammo.setY(sprite.getY());
-		System.out.println("x = " + sprite.getX() + "   y = " + sprite.getY());
-		
 		//tilemap.addSprite(ammo);
 		
 		if (dir == true)
