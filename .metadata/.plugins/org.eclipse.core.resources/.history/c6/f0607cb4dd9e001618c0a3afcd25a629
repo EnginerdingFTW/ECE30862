@@ -8,7 +8,7 @@ public class Amunition {
 	public boolean canShoot = true;
 	private boolean dir = false;
 	private boolean lastDir = true;
-	private float FIRE_RATE = 0.01f;
+	private static float FIRE_RATE = 0.01f;
 	private static float FIRE_VEL = 1.0f;
 	private Sprite ammo;
 	private static TileMap tilemap;
