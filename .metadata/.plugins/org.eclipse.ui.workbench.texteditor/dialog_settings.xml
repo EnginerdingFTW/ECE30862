@@ -3,26 +3,26 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="263" key="DIALOG_WIDTH"/>
 		<item value="177" key="DIALOG_Y_ORIGIN"/>
-		<item value="399" key="DIALOG_HEIGHT"/>
 		<item value="1046" key="DIALOG_X_ORIGIN"/>
+		<item value="399" key="DIALOG_HEIGHT"/>
 		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="SHOOTING" key="selection"/>
+		<item value="getSpriteC" key="selection"/>
 		<list key="findhistory">
-			<item value="SHOOTING"/>
-			<item value="triggerPulled = "/>
-			<item value="triggerPulled"/>
-			<item value="shootin"/>
-			<item value="shooting"/>
-			<item value="shoo"/>
-			<item value=".setState("/>
-			<item value="Grub"/>
+			<item value="getSpriteC"/>
+			<item value="getSprite"/>
+			<item value="sprite"/>
+			<item value="stopShooting"/>
+			<item value="stop"/>
+			<item value="gameLoop"/>
+			<item value="play(boo"/>
+			<item value="boopSound"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

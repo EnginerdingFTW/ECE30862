@@ -70,8 +70,7 @@ public class GameManager extends GameCore {
         soundManager = new SoundManager(PLAYBACK_FORMAT);
         prizeSound = soundManager.getSound("sounds/prize.wav");
         boopSound = soundManager.getSound("sounds/boop2.wav");
-        
-        
+
         // start music
         midiPlayer = new MidiPlayer();
         Sequence sequence =
@@ -321,11 +320,7 @@ public class GameManager extends GameCore {
             if (sprite instanceof Creature) {
                 Creature creature = (Creature)sprite;
                 Sprite collisionSprite = getSpriteCollision(creature);
-                if (collisionSprite instanceof FiredShot && creature instanceof FiredShot)
-                {
-                	System.out.println("IGNORE THE SHOTS COLLIDING");
-                }
-                else if (collisionSprite instanceof FiredShot && !(creature instanceof Player))
+                if (collisionSprite instanceof FiredShot && !(creature instanceof Player))
                 {
                 	FiredShot shot = (FiredShot)collisionSprite;
                 	if (shot.playerOwned == true)

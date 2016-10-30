@@ -70,8 +70,7 @@ public class GameManager extends GameCore {
         soundManager = new SoundManager(PLAYBACK_FORMAT);
         prizeSound = soundManager.getSound("sounds/prize.wav");
         boopSound = soundManager.getSound("sounds/boop2.wav");
-        
-        
+
         // start music
         midiPlayer = new MidiPlayer();
         Sequence sequence =
