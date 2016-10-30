@@ -153,15 +153,14 @@ public abstract class Creature extends Sprite {
             newAnim = deadLeft;
             if(!(this instanceof Player) && !(this instanceof FiredShot))
             {
-//            	if(((Player)this).getHealth() <= 30)
-//            	{
-//            		((Player)this).sethealth(((Player)this).getHealth()+10);
-//            	}
-//            	else
-//            	{
-//            		((Player)this).sethealth(40);
-//            	}
-            	
+            	if(((Player)this).getHealth() <= 30)
+            	{
+            		((Player)this).sethealth(((Player)this).getHealth()+10);
+            	}
+            	else
+            	{
+            		((Player)this).sethealth(40);
+            	}
             	score.Score+=100;
             }
             
@@ -170,14 +169,14 @@ public abstract class Creature extends Sprite {
             newAnim = deadRight;
             if(!(this instanceof Player))
             {
-//            	if(((Player)this).gethealth() <= 30)
-//            	{
-//            		((Player)this).sethealth(((Player)this).gethealth()+10);
-//            	}
-//            	else
-//            	{
-//            		((Player)this).sethealth(40);
-//            	}
+            	if(((Player)this).gethealth() <= 30)
+            	{
+            		((Player)this).sethealth(((Player)this).gethealth()+10);
+            	}
+            	else
+            	{
+            		((Player)this).sethealth(40);
+            	}
             	score.Score+=100;
             }
         }

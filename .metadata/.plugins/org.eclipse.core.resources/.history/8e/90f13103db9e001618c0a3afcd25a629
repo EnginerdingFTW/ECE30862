@@ -331,7 +331,6 @@ public class GameManager extends GameCore {
                 	if (shot.playerOwned == true)
                 	{
                 		soundManager.play(boopSound);
-                		((Player)map.getPlayer()).subHealth(-10);
 	                	creature.setState(Creature.STATE_DYING);
 	                	((FiredShot)collisionSprite).setState(Creature.STATE_DEAD);
                 	}

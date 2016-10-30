@@ -170,14 +170,14 @@ public abstract class Creature extends Sprite {
             newAnim = deadRight;
             if(!(this instanceof Player))
             {
-//            	if(((Player)this).gethealth() <= 30)
-//            	{
-//            		((Player)this).sethealth(((Player)this).gethealth()+10);
-//            	}
-//            	else
-//            	{
-//            		((Player)this).sethealth(40);
-//            	}
+            	if(((Player)this).gethealth() <= 30)
+            	{
+            		((Player)this).sethealth(((Player)this).gethealth()+10);
+            	}
+            	else
+            	{
+            		((Player)this).sethealth(40);
+            	}
             	score.Score+=100;
             }
         }

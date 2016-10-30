@@ -128,7 +128,7 @@ public class TileMapRenderer {
             Math.round(player.getX()) + offsetX,
             Math.round(player.getY()) + offsetY,
             null);
-        currhealth = ((Player)player).getHealth();
+        currhealth = player.getHealth();
     	System.out.println(currhealth);
         
         // draw sprites

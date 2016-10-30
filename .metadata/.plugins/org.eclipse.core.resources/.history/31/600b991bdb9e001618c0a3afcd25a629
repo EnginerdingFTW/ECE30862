@@ -21,7 +21,7 @@ public class Player extends Creature {
     {
         super(left, right, deadLeft, deadRight);
         health = 20;
-//        System.out.println("Health set.");
+        System.out.println("Health set.");
         lastposx=this.getX();
         lastposy=this.getY();
         timesincemove = 0;
@@ -29,14 +29,14 @@ public class Player extends Creature {
 		tim.schedule(new ShortTimer(), 0, 100);
     }
     
-    public int getHealth()
+    public int gethealth()
     {
-    	return health;
+    	return this.health;
     }
     
-    public void subHealth(int val)
+    public void sethealth(int newhealth)
     {
-    	health -= val;
+    	this.health = newhealth;
     }
 
     public void regeneration()

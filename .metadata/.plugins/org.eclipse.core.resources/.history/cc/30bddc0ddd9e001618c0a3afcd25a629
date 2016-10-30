@@ -37,6 +37,7 @@ public class Player extends Creature {
     public void subHealth(int val)
     {
     	health -= val;
+    	TileMapRenderer.currhealth = health;
     }
 
     public void regeneration()

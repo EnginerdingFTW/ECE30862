@@ -22,7 +22,7 @@ public class TileMapRenderer {
     // the size in bits of the tile
     // Math.pow(2, TILE_SIZE_BITS) == TILE_SIZE
     private static final int TILE_SIZE_BITS = 6;
-    private int currhealth;
+    public static int currhealth = 20;
 
     private Image background;
 
@@ -128,8 +128,8 @@ public class TileMapRenderer {
             Math.round(player.getX()) + offsetX,
             Math.round(player.getY()) + offsetY,
             null);
-        currhealth = ((Player)player).getHealth();
-    	System.out.println(currhealth);
+//        currhealth = ((Player)player).getHealth();
+//    	System.out.println(currhealth);
         
         // draw sprites
         Iterator i = map.getSprites();

@@ -128,22 +128,20 @@ public class TileMapRenderer {
             Math.round(player.getX()) + offsetX,
             Math.round(player.getY()) + offsetY,
             null);
-        currhealth = ((Player)player).getHealth();
-    	System.out.println(currhealth);
-        
+
         // draw sprites
         Iterator i = map.getSprites();
         while (i.hasNext()) {
             Sprite sprite = (Sprite)i.next();
-            if (sprite instanceof Creature)
-            {
+//            if (sprite instanceof Creature)
+//            {
 //            	Creature creature = (Creature)sprite;
 //            	if(creature instanceof Player)
 //            	{
-//	            	currhealth = ((Player)sprite).getHealth();
+//	            	currhealth = ((Player)sprite).gethealth();
 //	            	System.out.println(currhealth);
 //            	}
-            }
+//            }
             int x = Math.round(sprite.getX()) + offsetX;
             int y = Math.round(sprite.getY()) + offsetY;
             g.drawImage(sprite.getImage(), x, y, null);

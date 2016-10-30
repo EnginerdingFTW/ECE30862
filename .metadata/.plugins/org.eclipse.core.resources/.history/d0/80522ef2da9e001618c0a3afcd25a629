@@ -331,7 +331,6 @@ public class GameManager extends GameCore {
                 	if (shot.playerOwned == true)
                 	{
                 		soundManager.play(boopSound);
-                		((Player)map.getPlayer()).subHealth(-10);
 	                	creature.setState(Creature.STATE_DYING);
 	                	((FiredShot)collisionSprite).setState(Creature.STATE_DEAD);
                 	}
@@ -445,11 +444,11 @@ public class GameManager extends GameCore {
         {
         	if(((Creature) collisionSprite).getState()==Creature.STATE_NORMAL)
         	{
-        		player.subHealth(5);
+        		player.health-=5;
         		Creature bullet = (Creature)collisionSprite;
         		bullet.setState(Creature.STATE_DEAD);
         	}
-        	if(player.getHealth() <= 0)
+        	if(player.health <= 0)
         	{
         		soundManager.play(boopSound);
         		player.setState(Creature.STATE_DYING);
