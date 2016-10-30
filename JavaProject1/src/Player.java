@@ -20,7 +20,7 @@ public class Player extends Creature {
         Animation deadLeft, Animation deadRight)
     {
         super(left, right, deadLeft, deadRight);
-        health = 20;
+        health = 19;
 //        System.out.println("Health set.");
         lastposx=this.getX();
         lastposy=this.getY();
@@ -67,7 +67,7 @@ public class Player extends Creature {
     	}
     	if(this.getVelocityX() == 0 && this.getVelocityY() == 0 && this.lastposx == this.getX())
     	{
-    		timesincemove+=100;
+    		timesincemove+=85;
     	}
     }
 
