@@ -93,8 +93,11 @@ public class Amunition {
 		ammo.setX(sprite.getX());
 		ammo.setY(sprite.getY() + 50);
 		
-		tilemap.addSprite(ammo);
-//		System.out.println("finished spawning instance");
+		if (ammo != null)
+		{
+//			tilemap.addSprite(ammo);
+		}
+		System.out.println("finished spawning instance");
 		
 	}
 	
@@ -107,13 +110,13 @@ public class Amunition {
 	    	try
 	    	{
 	    		Thread.sleep((long) (FIRE_RATE * 400));
+		    	canShoot = true;
 	    	}
 	    	catch (Exception e)
 	    	{
 	    		System.out.println("ERROR");
 	    	}
 //	    	System.out.println("canShoot set to true");
-	    	canShoot = true;
 	    	
 	    }
     }
@@ -125,16 +128,15 @@ public class Amunition {
 	    	try
 	    	{
 	    		Thread.sleep((long) (500));
+		    	if (tempTriggerPulled == false)
+		    	{
+//		    		System.out.println("trigger pulled set false");
+		    		triggerPulled = false;
+		    	}
 	    	}
 	    	catch (Exception e)
 	    	{
 	    		System.out.println("ERROR");
-	    	}
-	    	if (tempTriggerPulled == false)
-	    	{
-//	    		System.out.println("trigger pulled set false");
-	    		triggerPulled = false;
-	    		
 	    	}
 	    }
     }
@@ -143,40 +145,41 @@ public class Amunition {
     {
 	    public void run()
 	    {
-	    	while (true)
+	    	try
 	    	{
-		    	try
+		    	while (!Thread.currentThread().isInterrupted())
 		    	{
-		    		Thread.sleep((long) (FIRE_RATE * 400));
+	//	    		System.out.println("in trigger watch");
+		    		Thread.sleep((long) (FIRE_RATE * 100));
+		    		
 		    		if (shotCount >= 10)
 		    		{
 //		    			System.out.println("10 found");
 		    			Thread.sleep((long) (1000));
 		    			shotCount = 0;
 		    		}
+	//		    	System.out.println("looping! - triggerPulled= " + triggerPulled);
+			    	if (triggerPulled)
+			    	{
+	//		    		System.out.println("nah");
+			    		if (canShoot)
+			    		{
+	//			    		System.out.println("shooting!");
+				    		shooting(sp);
+				    		shotCount++;
+			    		}
+			    	}
+			    	else
+			    	{
+			    		shotCount = 0;
+			    	}
+			    	
 		    	}
-		    	catch (Exception e)
-		    	{
-		    		System.out.println("ERROR");
-		    	}
-//		    	System.out.println("looping! - triggerPulled= " + triggerPulled);
-		    	if (triggerPulled)
-		    	{
-//		    		System.out.println("nah");
-		    		if (canShoot)
-		    		{
-//			    		System.out.println("shooting!");
-			    		shooting(sp);
-			    		shotCount++;
-		    		}
-		    	}
-		    	else
-		    	{
-		    		shotCount = 0;
-		    	}
-		    	
 	    	}
-	    	
+	    	catch (InterruptedException consumed)
+	    	{
+	    		System.out.println("ERROR");
+	    	}	
 	    }
     }
 	

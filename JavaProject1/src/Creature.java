@@ -151,7 +151,7 @@ public abstract class Creature extends Sprite {
         }
         if (state == STATE_DYING && newAnim == left) {
             newAnim = deadLeft;
-            if(!(this instanceof Player))
+            if(!(this instanceof Player) && !(this instanceof FiredShot))
             {
             	if(Player.health <= 30)
             	{

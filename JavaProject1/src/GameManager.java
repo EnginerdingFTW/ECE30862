@@ -132,7 +132,7 @@ public class GameManager extends GameCore {
             }
             if (jump.isPressed()) {
 //            	System.out.println("GameManager.checkInput in jump.isPressed()");
-                player.jump(false);
+//                player.jump(false);
             }
             if (shoot.isPressed()) {
 //            	System.out.println("GameManager.checkInput in shoot.isPressed()");

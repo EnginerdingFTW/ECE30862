@@ -1,5 +1,6 @@
 import java.util.Timer;
 import java.lang.*;
+
 /**
     The Player.
 */
@@ -23,11 +24,13 @@ public class Player extends Creature {
         lastposx=this.getX();
         lastposy=this.getY();
         timesincemove = 0;
+        Timer tim = new Timer();
+		tim.schedule(new ShortTimer(), 0);
     }
 
-    public void regenration()
+    public void regeneration()
     {
-    	if(timesincemove >= 1000)
+    	if(timesincemove >= 0)
     	{
     		health += 5;
     		timesincemove = 0;
@@ -97,6 +100,26 @@ public class Player extends Creature {
 
     public float getMaxSpeed() {
         return 0.5f;
+    }
+    
+    
+    private class ShortTimer extends java.util.TimerTask
+    {
+	    public void run()
+	    {
+	    	while (true)
+	    	{
+		    	try
+		    	{
+		    		Thread.sleep((long) (1000));
+		    	}
+		    	catch (Exception e)
+		    	{
+		    		System.out.println("ERROR");
+		    	}
+		    	regeneration();
+	    	}
+	    }
     }
 
 }

@@ -19,12 +19,12 @@ public class FiredShot extends Creature {
 	    	try
 	    	{
 	    		Thread.sleep((long) (deathTimer * 1000));
+		    	setState(STATE_DEAD);
 	    	}
 	    	catch (Exception e)
 	    	{
 	    		System.out.println("ERROR");
 	    	}
-	    	setState(STATE_DEAD);
 	    }
     }
 }
