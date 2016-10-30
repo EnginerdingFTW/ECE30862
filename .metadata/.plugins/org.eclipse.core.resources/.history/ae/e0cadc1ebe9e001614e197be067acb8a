@@ -27,11 +27,6 @@ public class Grub extends Creature {
     	map = m;
     }
     
-    public void stopShootingDeath()
-    {
-    	ammo.stop();
-    }
-    
     private void callShooting()
     {
     	if (getState() != Creature.STATE_DYING)

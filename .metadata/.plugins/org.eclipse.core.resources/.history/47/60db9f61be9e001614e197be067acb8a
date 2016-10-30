@@ -194,10 +194,6 @@ public abstract class Creature extends Sprite {
         // update to "dead" state
         stateTime += elapsedTime;
         if (state == STATE_DYING && stateTime >= DIE_TIME) {
-        	if (this instanceof Grub)
-        	{
-        		Grub.class.cast(this).stopShootingDeath();
-        	}
             setState(STATE_DEAD);
         }
     }
