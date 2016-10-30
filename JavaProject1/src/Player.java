@@ -36,7 +36,14 @@ public class Player extends Creature {
     
     public void subHealth(int val)
     {
-    	health -= val;
+    	if(health - val >= 40)
+    	{
+    		health = 40;
+    	}
+    	else
+    	{
+    		health -= val;
+    	}
     }
 
     public void regeneration()
@@ -65,7 +72,7 @@ public class Player extends Creature {
     			health+=5;
     		}
     	}
-    	if(this.getVelocityX() == 0 && this.getVelocityY() == 0 && this.lastposx == this.getX())
+    	if(this.getVelocityX() == 0 && this.getVelocityY() == 0)
     	{
     		timesincemove+=85;
     	}
