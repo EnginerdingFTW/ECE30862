@@ -8,7 +8,7 @@ public class Grub extends Creature {
 
 	private float reactionTime = 0.5f;
 	private static TileMap map;
-	private long playerDist = 20;
+	private long playerDist = 350;
 	private boolean shootingPlayer = false;
 	private float FIRE_RATE = 2.5f;
 	private Amunition ammo = new Amunition(FIRE_RATE);
@@ -19,6 +19,7 @@ public class Grub extends Creature {
         super(left, right, deadLeft, deadRight);
     	Timer tim = new Timer();
 		tim.schedule(new PlayerWatcher(), 0);
+		ammo.playerOwned = false;
     }
     
     public static void SetMap(TileMap m)
@@ -26,9 +27,17 @@ public class Grub extends Creature {
     	map = m;
     }
     
+    public void stopShootingDeath()
+    {
+    	ammo.stop();
+    }
+    
     private void callShooting()
     {
-    	ammo.shooting(this);
+    	if (getState() != Creature.STATE_DYING)
+    	{
+    		ammo.start(this);
+    	}
     }
     
     private class PlayerWatcher extends java.util.TimerTask
@@ -39,8 +48,13 @@ public class Grub extends Creature {
 	    	while (true)
 	    	{
 //	    		System.out.println("running playerWatch");
+	    		if (getState() == Creature.STATE_DYING)
+	    		{
+	    			ammo.stop();
+	    			break;
+	    		}
 		    	try
-		    	{
+		    	{	
 		    		Thread.sleep((long) (reactionTime * 1000));
 		    	}
 		    	catch (Exception e)
@@ -49,37 +63,37 @@ public class Grub extends Creature {
 		    	}
 		    	Player p = (Player)map.getPlayer();
 		    	double distx = p.getX() - getX();
-		    	double disty = p.getY() - getY();
-		    	System.out.println("distx = " + distx + "   disty = " + disty);
+//		    	double disty = p.getY() - getY();
+//		    	System.out.println("p.getX() = " + p.getX() + "   getX() = " + getX() + "     distx = " + distx);
 		    	
 		    	if (shootNext == true)
 		    	{
 		    		shootingPlayer = true;
 		    		callShooting();
 		    		//begin shooting player
-//		    		break;
+		    		break;
 		    	}
 		    	
-		    	if (Math.abs(distx) < playerDist || Math.abs(disty) < playerDist)
+		    	if (Math.abs(distx) < playerDist)
 		    	{
-//		    		System.out.println("WITHIN DIST");
+		    		System.out.println("WITHIN DIST");
 		    		if (shootingPlayer == false)
 		    		{
 		    			shootingPlayer = true;
 		    			//begin shooting player
 		    			callShooting();
-//		    			break;
+		    			break;
 		    		}
 		    	}
-		    	else if (Math.abs(distx) < playerDist + 100 || Math.abs(disty) < playerDist + 100)
+		    	else if (Math.abs(distx) < playerDist + 50)
 		    	{
-//		    		System.out.println("not close enough to fire immediately");
+		    		System.out.println("not close enough to fire immediately");
 		    		if (shootingPlayer == false)
 		    		{
 		    			shootNext = true;
 		    		}
 		    	}
-	    	}
+	    	}    
 	    }
     }
 

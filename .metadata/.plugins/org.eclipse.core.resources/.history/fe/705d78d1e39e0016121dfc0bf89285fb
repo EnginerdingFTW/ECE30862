@@ -70,7 +70,8 @@ public class GameManager extends GameCore {
         soundManager = new SoundManager(PLAYBACK_FORMAT);
         prizeSound = soundManager.getSound("sounds/prize.wav");
         boopSound = soundManager.getSound("sounds/boop2.wav");
-
+        
+        
         // start music
         midiPlayer = new MidiPlayer();
         Sequence sequence =
@@ -132,11 +133,15 @@ public class GameManager extends GameCore {
             }
             if (jump.isPressed()) {
 //            	System.out.println("GameManager.checkInput in jump.isPressed()");
-                player.jump(false);
+//                player.jump(false);
             }
             if (shoot.isPressed()) {
 //            	System.out.println("GameManager.checkInput in shoot.isPressed()");
             	player.shooting();
+            }
+            else if (!shoot.isPressed())
+            {
+            	player.stopShooting();
             }
             player.setVelocityX(velocityX);
         }
@@ -238,11 +243,26 @@ public class GameManager extends GameCore {
 //            s1y < s2y + s2.getHeight() &&
 //            s2y < s1y + s1.getHeight());
         // check if the  two sprites' boundaries intersect
-        if (s1 instanceof FiredShot || s2 instanceof FiredShot)
+        if ((s1 instanceof FiredShot && s2 instanceof Player) || (s1 instanceof Player && s2 instanceof FiredShot))
         {
-        	System.out.println("isCollision() - return false");
-        	return false;
+        	FiredShot s = null;
+        	if (s1 instanceof FiredShot)
+        	{
+        		s = (FiredShot) s1;
+        	}
+        	if (s2 instanceof FiredShot)
+        	{
+        		s = (FiredShot) s2;
+        	}
+        	if (s.playerOwned == true)
+        	{
+        		return false;
+        	}
         }
+//        else if ((s1 instanceof FiredShot && s2 instanceof Creature) || (s1 instanceof Creature && s2 instanceof FiredShot))
+//        {
+//        	System.out.println("firedshot and creature");	
+//        }
         return (s1x < s2x + s2.getWidth() &&
             s2x < s1x + s1.getWidth() &&
             s1y < s2y + s2.getHeight() &&
@@ -261,21 +281,6 @@ public class GameManager extends GameCore {
         while (i.hasNext()) {
             Sprite otherSprite = (Sprite)i.next();
 
-            if (sprite instanceof Creature && otherSprite instanceof FiredShot)
-            {
-            	if (sprite instanceof Player)
-            	{
-            		System.out.println("was a player");
-            	}
-            	else
-            	{
-            		System.out.println("NOT A PLAYER");
-            	}
-            }
-//            if (sprite instanceof Player && otherSprite instanceof FiredShot && ((FiredShot)otherSprite).playerOwned == true)
-//            {
-//            	System.out.println("ignore collision");
-//            }
             if (isCollision(sprite, otherSprite)) {
                 // collision found, return the Sprite
                 return otherSprite;
@@ -312,22 +317,24 @@ public class GameManager extends GameCore {
   
         while (i.hasNext()) {
             Sprite sprite = (Sprite)i.next();
-
-//            if (sprite instanceof FiredShot)
-//            {
-//            	System.out.println("DON'T KILL IT");
-//            	FiredShot shot = (FiredShot) sprite;
-//            	if (shot.getState() == Creature.STATE_DEAD)
-//            	{
-//            		System.out.println("the man is dead....");
-//            	}
-//            }
+            
             if (sprite instanceof Creature) {
                 Creature creature = (Creature)sprite;
                 Sprite collisionSprite = getSpriteCollision(creature);
-                if (collisionSprite instanceof FiredShot)
+                if (collisionSprite instanceof FiredShot && creature instanceof FiredShot)
                 {
-                	System.out.println("")
+                	System.out.println("IGNORE THE SHOTS COLLIDING");
+                }
+                else if (collisionSprite instanceof FiredShot && !(creature instanceof Player))
+                {
+                	FiredShot shot = (FiredShot)collisionSprite;
+                	if (shot.playerOwned == true)
+                	{
+                		soundManager.play(boopSound);
+                		((Player)map.getPlayer()).subHealth(-10);
+	                	creature.setState(Creature.STATE_DYING);
+	                	((FiredShot)collisionSprite).setState(Creature.STATE_DEAD);
+                	}
                 }
                 
                 if (creature.getState() == Creature.STATE_DEAD) {
@@ -365,13 +372,6 @@ public class GameManager extends GameCore {
         float oldX = creature.getX();
         float newX = oldX + dx * elapsedTime;
 
-        
-//        if (creature instanceof FiredShot)
-//        {
-//        	System.out.println("bullet in update creature");
-//        	return;
-//        }
-        
         
         Point tile =
             getTileCollision(creature, newX, creature.getY());
@@ -441,13 +441,26 @@ public class GameManager extends GameCore {
         if (collisionSprite instanceof PowerUp) {
             acquirePowerUp((PowerUp)collisionSprite);
         }
-//        else if (collisionSprite instanceof FiredShot){
-//        	System.out.println("FIRED SHOT COLLIDE");
-//        }
+        else if (collisionSprite instanceof FiredShot)
+        {
+        	if(((Creature) collisionSprite).getState()==Creature.STATE_NORMAL)
+        	{
+        		player.subHealth(5);
+        		Creature bullet = (Creature)collisionSprite;
+        		bullet.setState(Creature.STATE_DEAD);
+        	}
+        	if(player.getHealth() <= 0)
+        	{
+        		soundManager.play(boopSound);
+        		player.setState(Creature.STATE_DYING);
+        	}
+        	
+        }
         else if (collisionSprite instanceof Creature) {
             Creature badguy = (Creature)collisionSprite;
             if (canKill) {
                 // kill the badguy and make player bounce
+//            	System.out.println("hear a boop?");
                 soundManager.play(boopSound);
                 badguy.setState(Creature.STATE_DYING);
                 player.setY(badguy.getY() - player.getHeight());
@@ -455,7 +468,7 @@ public class GameManager extends GameCore {
             }
             else {
                 // player dies!
-                player.setState(Creature.STATE_DYING);
+//                player.setState(Creature.STATE_DYING);
             }
         }
     }
@@ -485,5 +498,6 @@ public class GameManager extends GameCore {
             map = resourceManager.loadNextMap();
         }
     }
+    
 
 }

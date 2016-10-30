@@ -10,7 +10,7 @@ public class Grub extends Creature {
 	private static TileMap map;
 	private long playerDist = 350;
 	private boolean shootingPlayer = false;
-	private float FIRE_RATE = 2.5f;
+	private float FIRE_RATE = 0.5f;
 	private Amunition ammo = new Amunition(FIRE_RATE);
 	
     public Grub(Animation left, Animation right,
