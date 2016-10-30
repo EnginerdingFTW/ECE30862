@@ -22,6 +22,7 @@ public class TileMapRenderer {
     // the size in bits of the tile
     // Math.pow(2, TILE_SIZE_BITS) == TILE_SIZE
     private static final int TILE_SIZE_BITS = 6;
+    private int currhealth;
 
     private Image background;
 
@@ -132,10 +133,19 @@ public class TileMapRenderer {
         Iterator i = map.getSprites();
         while (i.hasNext()) {
             Sprite sprite = (Sprite)i.next();
+            if (sprite instanceof Creature)
+            {
+            	Creature creature = (Creature)sprite;
+            	if(creature instanceof Player)
+            	{
+	            	currhealth = ((Player)sprite).gethealth();
+	            	System.out.println(currhealth);
+            	}
+            }
             int x = Math.round(sprite.getX()) + offsetX;
             int y = Math.round(sprite.getY()) + offsetY;
             g.drawImage(sprite.getImage(), x, y, null);
-
+            
             // wake up the creature when it's on screen
             if (sprite instanceof Creature &&
                 x >= 0 && x < screenWidth)
@@ -149,7 +159,7 @@ public class TileMapRenderer {
 	     
 	    g.setColor(Color.orange);
 	    
-	    g.drawString("SCORE: "+Integer.toString(ScoreKeep.Score) + "    HEALTH: " + Player.health, 30, 50);
+	    g.drawString("SCORE: "+Integer.toString(ScoreKeep.Score) + "    HEALTH: " + currhealth, 30, 50);
     }
 
 }

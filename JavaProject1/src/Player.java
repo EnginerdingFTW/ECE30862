@@ -11,7 +11,7 @@ public class Player extends Creature {
     private ScoreKeep scoreKeeper = new ScoreKeep();
     private Amunition ammo = new Amunition(FIRE_RATE);
     private boolean onGround;
-    public static int health;
+    private int health;
     private float lastposx;
     private float lastposy;
     private int timesincemove;
@@ -21,26 +21,51 @@ public class Player extends Creature {
     {
         super(left, right, deadLeft, deadRight);
         health = 20;
+        System.out.println("Health set.");
         lastposx=this.getX();
         lastposy=this.getY();
         timesincemove = 0;
         Timer tim = new Timer();
-		tim.schedule(new ShortTimer(), 0);
+		tim.schedule(new ShortTimer(), 0, 100);
+    }
+    
+    public int gethealth()
+    {
+    	return this.health;
+    }
+    
+    public void sethealth(int newhealth)
+    {
+    	this.health = newhealth;
     }
 
     public void regeneration()
     {
-    	if(timesincemove >= 0)
-    	{
-    		health += 5;
-    		timesincemove = 0;
-    	}
     	if(Math.abs(this.getX() - this.lastposx) >= 64)
     	{
     		this.lastposx=this.getX();
-    		health+=1;
+    		if(health >=40)
+    		{
+    			health = 40;
+    		}
+    		else
+    		{
+    			health+=1;
+    		}
     	}
-    	if(this.getVelocityX() == 0 && this.getVelocityY() == 0)
+    	else if(timesincemove >= 1000)
+    	{
+    		timesincemove = 0;
+    		if(health >=35)
+    		{
+    			health = 40;
+    		}
+    		else
+    		{
+    			health+=5;
+    		}
+    	}
+    	if(this.getVelocityX() == 0 && this.getVelocityY() == 0 && this.lastposx == this.getX())
     	{
     		timesincemove+=100;
     	}
@@ -107,18 +132,7 @@ public class Player extends Creature {
     {
 	    public void run()
 	    {
-	    	while (true)
-	    	{
-		    	try
-		    	{
-		    		Thread.sleep((long) (1000));
-		    	}
-		    	catch (Exception e)
-		    	{
-		    		System.out.println("ERROR");
-		    	}
-		    	regeneration();
-	    	}
+	    	regeneration();
 	    }
     }
 

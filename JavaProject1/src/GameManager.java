@@ -444,11 +444,11 @@ public class GameManager extends GameCore {
         {
         	if(((Creature) collisionSprite).getState()==Creature.STATE_NORMAL)
         	{
-        		Player.health-=5;
+        		player.sethealth(player.gethealth() - 5);
         		Creature bullet = (Creature)collisionSprite;
         		bullet.setState(Creature.STATE_DEAD);
         	}
-        	if(Player.health <= 0)
+        	if(player.gethealth() <= 0)
         	{
         		soundManager.play(boopSound);
         		player.setState(Creature.STATE_DYING);
