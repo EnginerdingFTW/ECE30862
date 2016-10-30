@@ -26,7 +26,7 @@ public class Player extends Creature {
         lastposy=this.getY();
         timesincemove = 0;
         Timer tim = new Timer();
-		tim.schedule(new ShortTimer(), 0, 100);
+		tim.scheduleAtFixedRate(new ShortTimer(), 2000, 7);
     }
     
     public int getHealth()
@@ -74,7 +74,7 @@ public class Player extends Creature {
     	}
     	if(this.getVelocityX() == 0 && this.getVelocityY() == 0)
     	{
-    		timesincemove+=85;
+    		timesincemove+=100;
     	}
     }
 
