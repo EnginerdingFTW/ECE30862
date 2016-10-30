@@ -25,8 +25,6 @@ public class Amunition {
 		this.FIRE_RATE = fire_rate;	
 		Timer tim = new Timer();
 		tim.schedule(new TriggerWatcher(), 0);
-		Timer t = new Timer();
-		t.schedule(new ShortTimer(), 0);
 	}
 	
 	public static void SetMap(TileMap tile)
@@ -58,6 +56,8 @@ public class Amunition {
 	public void stop()
 	{ 
 		tempTriggerPulled = false;
+		Timer t = new Timer();
+		t.schedule(new ShortTimer(), 0);
 	}
 	
 	private void spawnInstance(Sprite sprite)
@@ -95,9 +95,9 @@ public class Amunition {
 		
 		if (ammo != null)
 		{
-			tilemap.addSprite(ammo);
+//			tilemap.addSprite(ammo);
 		}
-//		System.out.println("finished spawning instance");
+		System.out.println("finished spawning instance");
 		
 	}
 	
@@ -127,15 +127,12 @@ public class Amunition {
 	    {
 	    	try
 	    	{
-	    		while (true)
-	    		{
-		    		Thread.sleep((long) (500));
-			    	if (tempTriggerPulled == false)
-			    	{
-//			    		System.out.println("trigger pulled set false");
-			    		triggerPulled = false;
-			    	}
-	    		}
+	    		Thread.sleep((long) (500));
+		    	if (tempTriggerPulled == false)
+		    	{
+//		    		System.out.println("trigger pulled set false");
+		    		triggerPulled = false;
+		    	}
 	    	}
 	    	catch (Exception e)
 	    	{

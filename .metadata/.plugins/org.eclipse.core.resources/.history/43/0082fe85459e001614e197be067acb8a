@@ -127,15 +127,12 @@ public class Amunition {
 	    {
 	    	try
 	    	{
-	    		while (true)
-	    		{
-		    		Thread.sleep((long) (500));
-			    	if (tempTriggerPulled == false)
-			    	{
-//			    		System.out.println("trigger pulled set false");
-			    		triggerPulled = false;
-			    	}
-	    		}
+	    		Thread.sleep((long) (500));
+		    	if (tempTriggerPulled == false)
+		    	{
+//		    		System.out.println("trigger pulled set false");
+		    		triggerPulled = false;
+		    	}
 	    	}
 	    	catch (Exception e)
 	    	{

@@ -445,7 +445,6 @@ public class GameManager extends GameCore {
         	}
         	if(Player.health <= 0)
         	{
-        		soundManager.play(boopSound);
         		player.setState(Creature.STATE_DYING);
         	}
         	

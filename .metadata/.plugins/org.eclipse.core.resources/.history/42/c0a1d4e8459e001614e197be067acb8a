@@ -284,7 +284,6 @@ public class ResourceManager {
             flyAnim[2], flyAnim[3]);
         grubSprite = new Grub(grubAnim[0], grubAnim[1],
             grubAnim[2], grubAnim[3]);
-        grubSprite.setX(-500);
     }
 
 

@@ -1,0 +1,20 @@
+import java.util.Timer;
+
+public class MultiTimer extends java.util.TimerTask
+{
+    public void run()
+    {
+    	while (true)
+    	{
+	    	try
+	    	{
+	    		Thread.sleep((long) (1000));
+	    	}
+	    	catch (Exception e)
+	    	{
+	    		System.out.println("ERROR");
+	    	}
+	    	regeneration();
+    	}
+    }
+}
