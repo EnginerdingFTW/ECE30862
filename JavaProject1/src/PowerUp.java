@@ -24,13 +24,22 @@ public abstract class PowerUp extends Sprite {
             return null;
         }
     }
+    
+    /**
+    A Mushroom PowerUp. Gives the player health.
+	*/
+	public static class Mushroom extends PowerUp {
+    public Mushroom(Animation anim) {
+        super(anim);
+    	}
+	}
 
 
     /**
         A Star PowerUp. Gives the player points.
     */
     public static class Star extends PowerUp {
-        public Star(Animation anim) {
+        public Star(Animation anim) {	
             super(anim);
         }
     }

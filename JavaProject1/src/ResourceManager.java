@@ -19,6 +19,7 @@ public class ResourceManager {
     private GraphicsConfiguration gc;
 
     // host sprites used for cloning
+    private Sprite mushroomSprite;
     private Sprite playerSprite;
     private Sprite musicSprite;
     private Sprite coinSprite;
@@ -176,6 +177,9 @@ public class ResourceManager {
                 }
                 else if (ch == '2') {
                     addSprite(newMap, flySprite, x, y);
+                }
+                else if (ch == '^') {
+                	addSprite(newMap, mushroomSprite, x, y);
                 }
             }
         }
@@ -346,6 +350,12 @@ public class ResourceManager {
         anim.addFrame(loadImage("music3.png"), 150);
         anim.addFrame(loadImage("music2.png"), 150);
         musicSprite = new PowerUp.Music(anim);
+        
+        //create mushroom
+        anim = new Animation();
+        anim.addFrame(loadImage("mushroom.png"), 100);
+        mushroomSprite = new PowerUp.Mushroom(anim);
+        
         
         //create firedShot
         anim = new Animation();

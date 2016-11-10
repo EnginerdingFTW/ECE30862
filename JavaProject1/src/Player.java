@@ -29,6 +29,22 @@ public class Player extends Creature {
 		tim.scheduleAtFixedRate(new ShortTimer(), 1500, 15);
     }
     
+    public void invincible()
+    {
+    	float lposx = this.getX();
+    	int inithealth = this.health;
+    	int i = 0;
+    	while((i > 100) && Math.abs(this.getX() - this.lposx) <= 640 )
+    	{
+    		this.health = inithealth;
+    		try{
+    			Thread.sleep(10);
+    		}catch(Exception e){}
+    		System.out.println("INVINCIBLE!!!");
+    	}
+    	return;
+    }
+    
     public int getHealth()
     {
     	return health;

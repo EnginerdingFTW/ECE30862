@@ -484,8 +484,13 @@ public class GameManager extends GameCore {
 
         if (powerUp instanceof PowerUp.Star) {
             // do something here, like give the player points
-            soundManager.play(prizeSound);
+        	((Player)map.getPlayer()).invincible();
         }
+        
+        else if (powerUp instanceof PowerUp.Mushroom){
+        	((Player)map.getPlayer()).subHealth(-5);
+        }
+        
         else if (powerUp instanceof PowerUp.Music) {
             // change the music
             soundManager.play(prizeSound);
