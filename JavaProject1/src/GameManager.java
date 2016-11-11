@@ -484,7 +484,7 @@ public class GameManager extends GameCore {
 
         if (powerUp instanceof PowerUp.Star) {
             // do something here, like give the player points
-        	((Player)map.getPlayer()).makeinvincible();
+        	((Player)map.getPlayer()).setInvincible();
         }
         
         else if (powerUp instanceof PowerUp.Mushroom){

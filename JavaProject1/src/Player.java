@@ -28,31 +28,33 @@ public class Player extends Creature {
         timesincemove = 0;
         Timer tim = new Timer();
 		tim.scheduleAtFixedRate(new ShortTimer(), 1500, 15);
+		
+		
     }
     
-    public void makeinvincible()
+    private void makeInvincible()
     {
     	long startTime = System.currentTimeMillis();
-    	invincible = true;
+    	invincible = true;//make invincible
     	System.out.println("I'M INVINCIBLE!");
-    	while(System.currentTimeMillis() - startTime <= 1000)
+    	while(System.currentTimeMillis() - startTime <= 1000) //While less than a second has passed
     	{
     		try{
-    			Thread.sleep(10);
+    			Thread.sleep(10);//wait a bit
     		}catch(Exception e){System.out.println("uh oh.");}
-    		System.out.println(System.currentTimeMillis());
     	}
-    	invincible = false;
+    	invincible = false;//then no longer invincible
     	System.out.println("I'M no longer INVINCIBLE!");
     	
     }
     
-    public void setinvincible(boolean a)
+    public void setInvincible()
     {
-    	this.invincible = a;
+    	Timer tim2 = new Timer();
+    	tim2.schedule(new invincibleTimer(), 0);
     }
     
-    public boolean getinvincible()
+    public boolean getInvincible()
     {
     	return this.invincible;
     }
@@ -169,6 +171,14 @@ public class Player extends Creature {
 	    {
 	    	regeneration();
 	    }
+    }
+    
+    private class invincibleTimer extends java.util.TimerTask
+    {
+    	public void run()
+    	{
+    		makeInvincible();
+    	}
     }
 
 }
