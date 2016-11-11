@@ -34,7 +34,7 @@ public class Player extends Creature {
     	float lposx = this.getX();
     	int inithealth = this.health;
     	int i = 0;
-    	while((i > 100) && Math.abs(this.getX() - this.lposx) <= 640 )
+    	while((i > 100) && Math.abs(this.getX() - lposx) <= 640 )
     	{
     		this.health = inithealth;
     		try{
