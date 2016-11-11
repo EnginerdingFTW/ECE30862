@@ -1,8 +1,0 @@
-
-public class FiredShot extends Creature {
-	public FiredShot(Animation right)
-	{
-		super(right, right, right, right);
-		
-	}
-}

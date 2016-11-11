@@ -15,6 +15,7 @@ public class Player extends Creature {
     private float lastposx;
     private float lastposy;
     private int timesincemove;
+    private boolean invincible;
 
     public Player(Animation left, Animation right,
         Animation deadLeft, Animation deadRight)
@@ -29,20 +30,31 @@ public class Player extends Creature {
 		tim.scheduleAtFixedRate(new ShortTimer(), 1500, 15);
     }
     
-    public void invincible()
+    public void makeinvincible()
     {
-    	float lposx = this.getX();
-    	int inithealth = this.health;
-    	int i = 0;
-    	while((i > 100) && Math.abs(this.getX() - lposx) <= 640 )
+    	long startTime = System.currentTimeMillis();
+    	invincible = true;
+    	System.out.println("I'M INVINCIBLE!");
+    	while(System.currentTimeMillis() - startTime <= 1000)
     	{
-    		this.health = inithealth;
     		try{
     			Thread.sleep(10);
-    		}catch(Exception e){}
-    		System.out.println("INVINCIBLE!!!");
+    		}catch(Exception e){System.out.println("uh oh.");}
+    		System.out.println(System.currentTimeMillis());
     	}
-    	return;
+    	invincible = false;
+    	System.out.println("I'M no longer INVINCIBLE!");
+    	
+    }
+    
+    public void setinvincible(boolean a)
+    {
+    	this.invincible = a;
+    }
+    
+    public boolean getinvincible()
+    {
+    	return this.invincible;
     }
     
     public int getHealth()
