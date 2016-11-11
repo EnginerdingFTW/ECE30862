@@ -36,15 +36,16 @@ public class Player extends Creature {
     {
     	long startTime = System.currentTimeMillis();
     	invincible = true;//make invincible
-    	System.out.println("I'M INVINCIBLE!");
-    	while(System.currentTimeMillis() - startTime <= 1000) //While less than a second has passed
+    	float startposx = this.getX();
+    	//System.out.println("I'M INVINCIBLE!");
+    	while((System.currentTimeMillis() - startTime <= 1000) && (Math.abs(this.getX() - startposx) <= 640)) //While less than a second has passed
     	{
     		try{
     			Thread.sleep(10);//wait a bit
     		}catch(Exception e){System.out.println("uh oh.");}
     	}
     	invincible = false;//then no longer invincible
-    	System.out.println("I'M no longer INVINCIBLE!");
+    	//System.out.println("I'M no longer INVINCIBLE!");
     	
     }
     

@@ -443,13 +443,13 @@ public class GameManager extends GameCore {
         }
         else if (collisionSprite instanceof FiredShot)
         {
-        	if(((Creature) collisionSprite).getState()==Creature.STATE_NORMAL)
+        	if(((Creature) collisionSprite).getState()==Creature.STATE_NORMAL && !player.getInvincible())
         	{
         		player.subHealth(5);
         		Creature bullet = (Creature)collisionSprite;
         		bullet.setState(Creature.STATE_DEAD);
         	}
-        	if(player.getHealth() <= 0)
+        	if(player.getHealth() <= 0 && !player.getInvincible())
         	{
         		soundManager.play(boopSound);
         		player.setState(Creature.STATE_DYING);
@@ -468,7 +468,10 @@ public class GameManager extends GameCore {
             }
             else {
                 // player dies!
-                player.setState(Creature.STATE_DYING);
+            	if(!player.getInvincible())
+            	{
+            		player.setState(Creature.STATE_DYING);
+            	}
             }
         }
     }
