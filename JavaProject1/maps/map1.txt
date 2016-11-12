@@ -11,11 +11,16 @@
 #   ^       Mushroom
 #	E		Exploding
 #	G		Gas
+#	W		Water Top
+#	U		Underwater
                                                                                                                                                                                                         A
                                                                                                                                                                                                         A
-                                                                                                                                                       ABABABABABABABABABABABA                          A
-                                                                                                                                                       A                     A                          A
-            o              1          o                              1           1                                                                     A                     A                          A
-                                                 ^        ^                                                                                            A                     A                          A
-ABABABEBABABABABABABAGABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABEABABABABABABGABABABABABABABABABABABABABABABABABABABABAFFFFFFA                     AFFFFABABABABABABABABABABABA
-                                                                                                                
+                                                                                                                                                                                                        A
+                                                                                                                                                                                                        A
+            o                         o                                                                                                                                                                 A
+                                                 ^        ^                                                                                                                                             A
+ABABABEBABABABABABABAGABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABEABABABABABABGABABAAWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWAABABABABABABABABABABABABABABABA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  

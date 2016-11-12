@@ -155,10 +155,12 @@ public class ResourceManager {
             String line = (String)lines.get(y);
             for (int x=0; x<line.length(); x++) {
                 char ch = line.charAt(x);
-
+               
                 // check if the char represents tile A, B, C etc.
                 int tile = ch - 'A';
                 if (tile >= 0 && tile < tiles.size()) {
+                	if(ch == 'W')
+                	{System.out.println("Found W");}
                     newMap.setTile(x, y, (Image)tiles.get(tile));
                 }
 
@@ -237,6 +239,7 @@ public class ResourceManager {
             tiles.add(loadImage(name));
             ch++;
         }
+        
     }
 
 
