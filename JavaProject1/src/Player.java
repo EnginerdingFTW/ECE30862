@@ -16,18 +16,19 @@ public class Player extends Creature {
     private float lastposy;
     private int timesincemove;
     private boolean invincible;
+    private long sleeptime = 10;
 
     public Player(Animation left, Animation right,
         Animation deadLeft, Animation deadRight)
     {
         super(left, right, deadLeft, deadRight);
-        health = 19;
+        health = 20;
 //        System.out.println("Health set.");
         lastposx=this.getX();
         lastposy=this.getY();
         timesincemove = 0;
         Timer tim = new Timer();
-		tim.scheduleAtFixedRate(new ShortTimer(), 1500, 15);
+		tim.schedule(new RegenTimer(), 0);
 		
 		
     }
@@ -79,33 +80,45 @@ public class Player extends Creature {
 
     public void regeneration()
     {
-    	if(Math.abs(this.getX() - this.lastposx) >= 64)
-    	{
-    		this.lastposx=this.getX();
-    		if(health >=40)
-    		{
-    			health = 40;
-    		}
-    		else
-    		{
-    			health+=1;
-    		}
-    	}
-    	else if(timesincemove >= 1000)
-    	{
-    		timesincemove = 0;
-    		if(health >=35)
-    		{
-    			health = 40;
-    		}
-    		else
-    		{
-    			health+=5;
-    		}
-    	}
-    	if(this.getVelocityX() == 0 && this.getVelocityY() == 0)
-    	{
-    		timesincemove+=100;
+    	
+    	System.out.println("Begin Regeneration");
+    	long starttime = System.currentTimeMillis();
+    	float lastpos = this.getX();
+    	float timemove = 0;
+	    	while(true)
+	    	{
+	    	
+	    	if(Math.abs(this.getX() - lastpos) >= 64)
+	    	{
+	    		lastpos=this.getX();
+	    		if(health >=40)
+	    		{
+	    			health = 40;
+	    		}
+	    		else
+	    		{
+	    			health+=1;
+	    		}
+	    	}
+	    	else if(timemove >= 1200)
+	    	{
+	    		starttime = System.currentTimeMillis();
+	    		if(health >=35)
+	    		{
+	    			health = 40;
+	    		}
+	    		else
+	    		{
+	    			health+=5;
+	    		}
+	    	}
+	    	if(this.getVelocityX() == 0 && this.getVelocityY() == 0)
+	    	{
+	    		timemove=System.currentTimeMillis() - starttime;
+	    	}
+	    	try{
+	    		Thread.sleep(sleeptime);
+	    	}catch(Exception e){}
     	}
     }
 
@@ -166,7 +179,7 @@ public class Player extends Creature {
     }
     
     
-    private class ShortTimer extends java.util.TimerTask
+    private class RegenTimer extends java.util.TimerTask
     {
 	    public void run()
 	    {
