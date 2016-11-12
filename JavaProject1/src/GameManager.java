@@ -42,6 +42,8 @@ public class GameManager extends GameCore {
     private GameAction moveRight;
     private GameAction shoot;
     private GameAction jump;
+    private GameAction hopL;
+    private GameAction hopR;
     private GameAction exit;
 
 
@@ -98,6 +100,8 @@ public class GameManager extends GameCore {
         shoot = new GameAction("shoot");
         jump = new GameAction("jump",
             GameAction.DETECT_INITAL_PRESS_ONLY);
+        hopL = new GameAction("hopL", GameAction.DETECT_INITAL_PRESS_ONLY);
+        hopR = new GameAction("hopR", GameAction.DETECT_INITAL_PRESS_ONLY);
         exit = new GameAction("exit",
             GameAction.DETECT_INITAL_PRESS_ONLY);
 
@@ -109,7 +113,7 @@ public class GameManager extends GameCore {
         inputManager.mapToKey(shoot,  KeyEvent.VK_S);
         inputManager.mapToKey(moveLeft, KeyEvent.VK_LEFT);
         inputManager.mapToKey(moveRight, KeyEvent.VK_RIGHT);
-        inputManager.mapToKey(jump, KeyEvent.VK_SPACE);
+        inputManager.mapToKey(jump, KeyEvent.VK_UP);
         inputManager.mapToKey(exit, KeyEvent.VK_ESCAPE);
     }
 
@@ -133,7 +137,7 @@ public class GameManager extends GameCore {
             }
             if (jump.isPressed()) {
 //            	System.out.println("GameManager.checkInput in jump.isPressed()");
-//                player.jump(false);
+                player.jump(false);
             }
             if (shoot.isPressed()) {
 //            	System.out.println("GameManager.checkInput in shoot.isPressed()");

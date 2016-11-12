@@ -9,15 +9,16 @@
 #   1       Bad Guy 1 (grub)
 #   2       Bad Guy 2 (fly)
 #   ^       Mushroom
- 
-                                                                                       A
-                                                                                       A
-                                                                                       A
-                                                                                       A
-                                                                                       A                                                                
-                                                                                       A
-                                                                                       A
-                                                                                       A
-            o              1          o                              1           1     A
-                                                 ^        ^                            A
-ABABABABABABABABABABABABABABABABABABABABABABABABAABABABABABABABABABABABABABABABABABABABA
+#	E		Exploding
+#	G		Gas
+ 																												A
+                                                                                       							A
+                                                                                       							A
+                                                                                                                A                                                              
+                                                                                                                A                                      
+                                                                                       							A
+                                                                                       							A
+                                                                                       							A
+            o              1          o                              1           1     							A
+                                                 ^        ^                            							A
+ABABABEBABABABABABABAGABABABABABABABABABABABABABAABABABABABABABABABABABABABABABABABABABABABEABABABABABABGABABABAA
