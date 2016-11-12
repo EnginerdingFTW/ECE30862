@@ -18,8 +18,6 @@ public class GameManager extends GameCore {
         new GameManager().run();
     }
     
-    //Adrian has arrived.
-
     // uncompressed, 44100Hz, 16-bit, mono, signed, little-endian
     private static final AudioFormat PLAYBACK_FORMAT =
         new AudioFormat(44100, 16, 1, true, false);
@@ -40,10 +38,9 @@ public class GameManager extends GameCore {
 
     private GameAction moveLeft;
     private GameAction moveRight;
+    private GameAction moveDown;
     private GameAction shoot;
     private GameAction jump;
-    private GameAction hopL;
-    private GameAction hopR;
     private GameAction exit;
 
 
@@ -97,13 +94,13 @@ public class GameManager extends GameCore {
     private void initInput() {
         moveLeft = new GameAction("moveLeft");
         moveRight = new GameAction("moveRight");
+        moveDown = new GameAction("moveDown");
         shoot = new GameAction("shoot");
-        jump = new GameAction("jump",
-            GameAction.DETECT_INITAL_PRESS_ONLY);
-        hopL = new GameAction("hopL", GameAction.DETECT_INITAL_PRESS_ONLY);
-        hopR = new GameAction("hopR", GameAction.DETECT_INITAL_PRESS_ONLY);
+        jump = new GameAction("jump"/*,
+            GameAction.DETECT_INITAL_PRESS_ONLY*/);
         exit = new GameAction("exit",
             GameAction.DETECT_INITAL_PRESS_ONLY);
+        
 
         
         inputManager = new InputManager(
@@ -115,6 +112,7 @@ public class GameManager extends GameCore {
         inputManager.mapToKey(moveRight, KeyEvent.VK_RIGHT);
         inputManager.mapToKey(jump, KeyEvent.VK_UP);
         inputManager.mapToKey(exit, KeyEvent.VK_ESCAPE);
+        inputManager.mapToKey(moveDown, KeyEvent.VK_DOWN);
     }
 
 
@@ -126,6 +124,7 @@ public class GameManager extends GameCore {
 
         Player player = (Player)map.getPlayer();
         if (player.isAlive()) {
+        	float velocityY = 0;
             float velocityX = 0;
             if (moveLeft.isPressed()) {
 //            	System.out.println("GameManager.checkInput in moveLeft.isPressed()");
@@ -137,7 +136,17 @@ public class GameManager extends GameCore {
             }
             if (jump.isPressed()) {
 //            	System.out.println("GameManager.checkInput in jump.isPressed()");
-                player.jump(false);
+            	if((moveRight.isPressed() || moveLeft.isPressed()) && !player.isFlying())
+            	{player.jump(false);}
+            	if(player.isFlying())
+            	{
+            		velocityY+=player.getMaxSpeed();
+            	}
+            	
+            }
+            else if(moveDown.isPressed())
+            {
+            	velocityY-=player.getMaxSpeed();
             }
             if (shoot.isPressed()) {
 //            	System.out.println("GameManager.checkInput in shoot.isPressed()");
@@ -148,6 +157,9 @@ public class GameManager extends GameCore {
             	player.stopShooting();
             }
             player.setVelocityX(velocityX);
+            if(player.isFlying()){
+            	player.setVelocityY(velocityY);
+            }
         }
 
     }

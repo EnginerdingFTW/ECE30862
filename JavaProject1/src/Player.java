@@ -17,6 +17,7 @@ public class Player extends Creature {
     private int timesincemove;
     private boolean invincible;
     private long sleeptime = 10;
+    private boolean isgrav = true;
 
     public Player(Animation left, Animation right,
         Animation deadLeft, Animation deadRight)
@@ -31,6 +32,15 @@ public class Player extends Creature {
 		tim.schedule(new RegenTimer(), 0);
 		
 		
+    }
+    
+    public void setGravity(boolean grav)
+    {
+    	this.isgrav = grav;
+    }
+    
+    public boolean isGravity(){
+    	return(isgrav);
     }
     
     private void makeInvincible()

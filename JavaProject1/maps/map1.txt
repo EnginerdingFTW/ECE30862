@@ -11,14 +11,11 @@
 #   ^       Mushroom
 #	E		Exploding
 #	G		Gas
- 																												A
-                                                                                       							A
-                                                                                       							A
-                                                                                                                A                                                              
-                                                                                                                A                                      
-                                                                                       							A
-                                                                                       							A
-                                                                                       							A
-            o              1          o                              1           1     							A
-                                                 ^        ^                            							A
-ABABABEBABABABABABABAGABABABABABABABABABABABABABAABABABABABABABABABABABABABABABABABABABABABEABABABABABABGABABABAA
+                                                                                                                                                                                                        A
+                                                                                                                                                                                                        A
+                                                                                                                                                       ABABABABABABABABABABABA                          A
+                                                                                                                                                       A                     A                          A
+            o              1          o                              1           1                                                                     A                     A                          A
+                                                 ^        ^                                                                                            A                     A                          A
+ABABABEBABABABABABABAGABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABEABABABABABABGABABABABABABABABABABABABABABABABABABABABAFFFFFFA                     AFFFFABABABABABABABABABABABA
+                                                                                                                
