@@ -325,6 +325,10 @@ public class GameManager extends GameCore {
                 {
                 	System.out.println("IGNORE THE SHOTS COLLIDING");
                 }
+                if(creature instanceof FiredShot && collisionSprite instanceof PowerUp)
+                {
+                	System.out.println("Ignore shooting shrooms");
+                }
                 else if (collisionSprite instanceof FiredShot && !(creature instanceof Player))
                 {
                 	FiredShot shot = (FiredShot)collisionSprite;
