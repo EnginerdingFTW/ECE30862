@@ -90,20 +90,15 @@ public class ResourceManager {
 
     public TileMap loadNextMap() {
         TileMap map = null;
-        while (map == null) {
-            currentMap++;
-            try {
-                map = loadMap(
-                    "maps/map" + currentMap + ".txt");
-            }
-            catch (IOException ex) {
-                if (currentMap == 1) {
-                    // no maps to load!
-                    return null;
-                }
-                currentMap = 0;
-                map = null;
-            }
+        try {
+        	System.out.println("Loading "+ GameManager.fname);
+            map = loadMap(
+                "maps/" + (String)GameManager.fname);
+        }
+        catch (IOException ex) {
+            map = null;
+            System.out.println("That map won't work.");
+            
         }
         Amunition.SetMap(map);
         Grub.SetMap(map);
@@ -159,8 +154,6 @@ public class ResourceManager {
                 // check if the char represents tile A, B, C etc.
                 int tile = ch - 'A';
                 if (tile >= 0 && tile < tiles.size()) {
-                	if(ch == 'W')
-                	{System.out.println("Found W");}
                     newMap.setTile(x, y, (Image)tiles.get(tile));
                 }
 

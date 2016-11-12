@@ -6,7 +6,7 @@ import java.util.Iterator;
 import javax.sound.midi.Sequence;
 import javax.sound.midi.Sequencer;
 import javax.sound.sampled.AudioFormat;
-
+import java.util.Scanner;
 
 /**
     GameManager manages all parts of the game.
@@ -14,6 +14,10 @@ import javax.sound.sampled.AudioFormat;
 public class GameManager extends GameCore {
 
     public static void main(String[] args) {
+    	Scanner scanner = new Scanner(System.in);
+        System.out.print("Please enter the name of the map you would like to load: ");
+        String name = scanner.next();
+        GameManager.fname = name;
     	System.out.println("starting the game.");
         new GameManager().run();
     }
@@ -26,6 +30,7 @@ public class GameManager extends GameCore {
 
     public static final float GRAVITY = 0.002f;
 
+    public static String fname;
     private Point pointCache = new Point();
     private TileMap map;
     private MidiPlayer midiPlayer;

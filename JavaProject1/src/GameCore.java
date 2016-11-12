@@ -121,7 +121,7 @@ public abstract class GameCore {
         	}
         	catch (Exception e)
         	{
-        		System.out.println("WHY YOU BREAK??? = " + e.toString());
+        		//System.out.println("WHY YOU BREAK??? = " + e.toString());
         	}
             // don't take a nap! run as fast as possible
             /*try {
