@@ -145,7 +145,7 @@ public class GameManager extends GameCore {
             	{player.jump(false);}
             	if(player.isFlying())
             	{
-            		velocityY-=player.getMaxSpeed();
+            		velocityY+=player.getMaxSpeed();
             	}
             	
             }
@@ -428,18 +428,24 @@ public class GameManager extends GameCore {
         float dy = creature.getVelocityY();
         float oldY = creature.getY();
         float newY = oldY + dy * elapsedTime;
+        boolean watertile = false;
         tile = getTileCollision(creature, creature.getX(), newY);
+        try{
+        	currcoord = tile.toString();
+        	watertile = ResourceManager.tileHashMap.get(currcoord).equals("W") || ResourceManager.tileHashMap.get(currcoord).equals("U");
+        	System.out.println("Found Currcord/watertile" + Boolean.toString(watertile));
+        }catch (Exception e){watertile = false;/*System.out.println("Can't do currcord");*/}
         
         
-        if (tile == null) {
+        if (tile == null || watertile) {
             creature.setY(newY);
         }
         else {
             // line up with the tile boundary
-        	currcoord = Integer.toString(tile.x) + "," +Integer.toString(tile.y);
+        	
         	//System.out.println(currcoord);
         	//System.out.println(ResourceManager.tileHashMap.get(currcoord));
-        	if(ResourceManager.tileHashMap.get(currcoord).equals("W") || ResourceManager.tileHashMap.get(currcoord).equals("U"))
+        	if(watertile)
         	{
         		//System.out.println(currcoord);
         		if(creature instanceof Player)
