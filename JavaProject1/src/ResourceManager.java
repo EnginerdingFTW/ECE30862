@@ -4,7 +4,9 @@ import java.awt.geom.AffineTransform;
 import java.io.*;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -27,6 +29,7 @@ public class ResourceManager {
     private Sprite grubSprite;
     private Sprite flySprite;
     private Sprite firedShotSprite;
+    public static HashMap<String, String> tileHashMap;
     
     public Sprite getFiredShot()
     {
@@ -92,12 +95,14 @@ public class ResourceManager {
         TileMap map = null;
         try {
         	System.out.println("Loading "+ GameManager.fname);
-            map = loadMap(
-                "maps/" + (String)GameManager.fname);
+            map = loadMap("maps/" + (String)GameManager.fname);
         }
         catch (IOException ex) {
-            map = null;
-            System.out.println("That map won't work.");
+        	try{
+            map = loadMap("maps/map1.txt");
+        	}catch(Exception e){}
+            System.out.println("That map won't work.  Loading default.");
+            
             
         }
         Amunition.SetMap(map);
@@ -146,10 +151,13 @@ public class ResourceManager {
         // parse the lines to create a TileEngine
         height = lines.size();
         TileMap newMap = new TileMap(width, height);
+        this.tileHashMap=new HashMap<String, String>();
         for (int y=0; y<height; y++) {
             String line = (String)lines.get(y);
             for (int x=0; x<line.length(); x++) {
                 char ch = line.charAt(x);
+                
+                tileHashMap.put(Integer.toString(x) + "," + Integer.toString(y), Character.toString(ch));
                
                 // check if the char represents tile A, B, C etc.
                 int tile = ch - 'A';
@@ -178,7 +186,9 @@ public class ResourceManager {
                 }
             }
         }
-
+        for (Map.Entry<String, String> entry : tileHashMap.entrySet()) {
+            System.out.println(entry.getKey()+" : "+entry.getValue());
+        }
         // add the player to the map
         Sprite player = (Sprite)playerSprite.clone();
         player.setX(TileMapRenderer.tilesToPixels(3));
