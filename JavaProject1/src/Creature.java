@@ -24,6 +24,7 @@ public abstract class Creature extends Sprite {
     private Animation deadRight;
     private int state;
     private long stateTime;
+    private boolean flying = false;
 
     /**
         Creates a new Creature with the specified Animations.
@@ -115,7 +116,11 @@ public abstract class Creature extends Sprite {
         Checks if this creature is flying.
     */
     public boolean isFlying() {
-        return false;
+        return flying;
+    }
+    
+    public void setFlying(boolean fly){
+    	this.flying = fly;
     }
 
 

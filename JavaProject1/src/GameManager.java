@@ -145,13 +145,13 @@ public class GameManager extends GameCore {
             	{player.jump(false);}
             	if(player.isFlying())
             	{
-            		velocityY+=player.getMaxSpeed();
+            		velocityY-=player.getMaxSpeed();
             	}
             	
             }
             else if(moveDown.isPressed())
             {
-            	velocityY-=player.getMaxSpeed();
+            	velocityY+=player.getMaxSpeed();
             }
             if (shoot.isPressed()) {
 //            	System.out.println("GameManager.checkInput in shoot.isPressed()");
@@ -383,6 +383,9 @@ public class GameManager extends GameCore {
     private void updateCreature(Creature creature,
         long elapsedTime)
     {
+    	
+    	String currcoord;
+    	String currblock;
     
         // apply gravity
         if (!creature.isFlying()) {
@@ -400,6 +403,7 @@ public class GameManager extends GameCore {
         
         Point tile =
             getTileCollision(creature, newX, creature.getY());
+        
         if (tile == null) {
             creature.setX(newX);
         }
@@ -425,21 +429,39 @@ public class GameManager extends GameCore {
         float oldY = creature.getY();
         float newY = oldY + dy * elapsedTime;
         tile = getTileCollision(creature, creature.getX(), newY);
+        
+        
         if (tile == null) {
             creature.setY(newY);
         }
         else {
             // line up with the tile boundary
-            if (dy > 0) {
-                creature.setY(
-                    TileMapRenderer.tilesToPixels(tile.y) -
-                    creature.getHeight());
-            }
-            else if (dy < 0) {
-                creature.setY(
-                    TileMapRenderer.tilesToPixels(tile.y + 1));
-            }
-            creature.collideVertical();
+        	currcoord = Integer.toString(tile.x) + "," +Integer.toString(tile.y);
+        	//System.out.println(currcoord);
+        	//System.out.println(ResourceManager.tileHashMap.get(currcoord));
+        	if(ResourceManager.tileHashMap.get(currcoord).equals("W") || ResourceManager.tileHashMap.get(currcoord).equals("U"))
+        	{
+        		//System.out.println(currcoord);
+        		if(creature instanceof Player)
+        		{
+        			creature.setFlying(true);
+        			//System.out.println(creature.isFlying());
+        		}
+        	}
+        	else{
+        		if(creature instanceof Player)
+        		{creature.setFlying(false);}
+	            if (dy > 0) {
+	                creature.setY(
+	                    TileMapRenderer.tilesToPixels(tile.y) -
+	                    creature.getHeight());
+	            }
+	            else if (dy < 0) {
+	                creature.setY(
+	                    TileMapRenderer.tilesToPixels(tile.y + 1));
+	            }
+	            creature.collideVertical();
+        	}
         }
         if (creature instanceof Player) {
             boolean canKill = (oldY < creature.getY());

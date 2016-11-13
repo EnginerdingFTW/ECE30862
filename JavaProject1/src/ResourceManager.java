@@ -157,7 +157,7 @@ public class ResourceManager {
             for (int x=0; x<line.length(); x++) {
                 char ch = line.charAt(x);
                 
-                tileHashMap.put(Integer.toString(x) + "," + Integer.toString(y), Character.toString(ch));
+                tileHashMap.put(Integer.toString(x) + "," + Integer.toString(y), Character.toString(ch));//Gives a hashmap with the type at each coordinate
                
                 // check if the char represents tile A, B, C etc.
                 int tile = ch - 'A';
